@@ -18,7 +18,7 @@ This presentation showcases the Mine Safety Monitor, an AI-powered Copilot Agent
 
 You can view the presentation in two ways:
 
-1. **Online**: Visit the [GitHub Pages site](https://YOUR_USERNAME.github.io/mine-safety-monitor/)
+1. **Online**: Visit the [GitHub Pages site](https://bhekumusaeric.github.io/PresentationAAAHackathon/)
 2. **Offline**: Download the HTML file and open it in any modern web browser
 
 ## Technologies Used
