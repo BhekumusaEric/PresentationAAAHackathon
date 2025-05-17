@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Safety Monitor - Copilot Agent</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .presentation {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .slide {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+            min-height: 500px;
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .title-slide {
+            background: linear-gradient(135deg, #1a3a5f, #0d2339);
+            color: white;
+            text-align: center;
+            padding: 100px 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2em;
+            color: #1a3a5f;
+            border-bottom: 2px solid #f0ad4e;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .title-slide h2 {
+            color: #f0ad4e;
+            border-bottom: none;
+        }
+        .content-container {
+            display: flex;
+            margin-top: 30px;
+        }
+        .text-content {
+            flex: 1;
+            padding-right: 30px;
+        }
+        .visual-content {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .problem-item, .solution-item, .innovation-item, .team-item, .market-item {
+            background-color: #f9f9f9;
+            border-left: 4px solid #f0ad4e;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        .problem-item h3, .solution-item h3, .innovation-item h3, .team-item h3, .market-item h3 {
+            margin-top: 0;
+            color: #1a3a5f;
+        }
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #f0ad4e;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .nav-button {
+            background-color: #1a3a5f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .nav-button:hover {
+            background-color: #0d2339;
+        }
+        .mock-app {
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 280px;
+            height: 500px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .app-header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .app-content {
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .closing-points {
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 40px 0;
+        }
+        .closing-highlight {
+            font-size: 1.4em;
+            color: #f0ad4e;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .demo-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .demo-item h3 {
+            margin-top: 0;
+            color: #1a3a5f;
+            border-bottom: 2px solid #f0ad4e;
+            padding-bottom: 5px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .navigation {
+                display: none;
+            }
+            .presentation {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .slide {
+                page-break-after: always;
+                display: block !important;
+                min-height: auto;
+                border: none;
+            }
+            .content-container {
+                display: block;
+            }
+            .text-content, .visual-content {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .visual-content {
+                background-color: white;
+            }
+            .mock-app {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            .title-slide {
+                background: white;
+                color: #1a3a5f;
+                border: 2px solid #1a3a5f;
+            }
+            .title-slide h2 {
+                color: #1a3a5f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide title-slide active">
+            <h1>Mine Safety Monitor</h1>
+            <h2>A Copilot Agent Designed for Safer Mining Environments</h2>
+            <div style="margin-top: 40px;">
+                <p><strong>Team Name:</strong> Safety Innovators</p>
+                <p><strong>Date:</strong> May 17, 2025</p>
+                <p><strong>Location:</strong> AAA Hackathon – Bryanston, South Africa</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem Identification -->
+        <div class="slide">
+            <h2>🚨 The Deadly Reality of Mining</h2>
+            <div style="background-color: #dc3545; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                <div style="font-size: 2.5em; font-weight: bold; margin-bottom: 10px;">12,000+</div>
+                <p style="font-size: 1.2em; margin: 0;">Mining fatalities worldwide each year</p>
+            </div>
+
+            <div class="content-container">
+                <div class="text-content">
+                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
+                        <h3>Life-Threatening Hazards</h3>
+                        <p>Mining operations face deadly hazards daily: toxic gas leaks, catastrophic rockfalls, machinery accidents, and underground fires that can trap workers with limited escape routes.</p>
+                    </div>
+
+                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
+                        <h3>Devastating Impact</h3>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>Human Cost:</strong> Thousands of preventable deaths and injuries annually</li>
+                            <li><strong>Economic Burden:</strong> $20+ billion in global losses from mining accidents</li>
+                            <li><strong>Operational Impact:</strong> Each major incident can halt operations for weeks</li>
+                        </ul>
+                    </div>
+
+                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
+                        <h3>Critical Response Gap</h3>
+                        <p><strong>Every minute matters in mining emergencies:</strong></p>
+                        <ul>
+                            <li>Current manual reporting systems cause 15-40 minute delays</li>
+                            <li>For trapped miners, survival rates drop 50% after the first hour</li>
+                            <li>Gas exposure fatalities increase 70% with delayed reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="visual-content">
+                    <img src="https://www.cdc.gov/niosh/mining/UserFiles/images/mining-safety-research.jpg" alt="Mining Safety Hazards" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+
+                    <div style="background-color: #f8d7da; border: 1px solid #dc3545; padding: 15px; border-radius: 10px;">
+                        <h3 style="color: #dc3545; margin-top: 0;">The Deadly Timeline</h3>
+                        <div style="display: flex; margin-top: 10px;">
+                            <div style="flex: 1; text-align: center; border-right: 1px solid #dc3545; padding-right: 10px;">
+                                <div style="font-size: 1.8em; font-weight: bold; color: #dc3545;">15-40 min</div>
+                                <p>Current reporting delay</p>
+                            </div>
+                            <div style="flex: 1; text-align: center; padding-left: 10px;">
+                                <div style="font-size: 1.8em; font-weight: bold; color: #dc3545;">60 min</div>
+                                <p>Critical survival window</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; text-align: center; font-weight: bold;">Current systems waste precious minutes when seconds count</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Our Solution -->
+        <div class="slide">
+            <h2>🤖 Mine Safety Monitor: Life-Saving Response</h2>
+
+            <div style="background-color: #28a745; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                <div style="font-size: 1.8em; font-weight: bold; margin-bottom: 5px;">Reducing Response Time by 85%</div>
+                <p style="font-size: 1.1em; margin: 0;">From 30+ minutes to under 5 minutes</p>
+            </div>
+
+            <div class="content-container">
+                <div class="text-content">
+                    <h3 style="color: #28a745;">How It Saves Lives:</h3>
+
+                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
+                        <h3 style="margin-top: 0; color: #28a745;">Instant Reporting</h3>
+                        <p>One-tap incident reporting with voice input for hands-free operation in emergencies</p>
+                        <p><strong>Impact:</strong> <span style="color: #28a745;">Cuts reporting time from minutes to seconds</span></p>
+                    </div>
+
+                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
+                        <h3 style="margin-top: 0; color: #28a745;">Intelligent Prioritization</h3>
+                        <p>AI analyzes incident severity and automatically alerts appropriate response teams</p>
+                        <p><strong>Impact:</strong> <span style="color: #28a745;">Critical incidents get immediate attention</span></p>
+                    </div>
+
+                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
+                        <h3 style="margin-top: 0; color: #28a745;">Predictive Safety</h3>
+                        <p>Analyzes patterns to identify high-risk areas before incidents occur</p>
+                        <p><strong>Impact:</strong> <span style="color: #28a745;">Prevents accidents before they happen</span></p>
+                    </div>
+
+                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; border-radius: 0 5px 5px 0;">
+                        <h3 style="margin-top: 0; color: #28a745;">Offline Capability</h3>
+                        <p>Works underground with no connectivity, syncing when connection is restored</p>
+                        <p><strong>Impact:</strong> <span style="color: #28a745;">No dead zones for safety reporting</span></p>
+                    </div>
+                </div>
+
+                <div class="visual-content">
+                    <div class="mock-app">
+                        <div class="app-header">
+                            <h3>Mine Safety Monitor</h3>
+                        </div>
+                        <div class="app-content">
+                            <h4>Report New Incident</h4>
+                            <div style="margin-bottom: 15px;">
+                                <label>Incident Type:</label>
+                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                                    <option>Gas Leak</option>
+                                    <option>Rockfall</option>
+                                    <option>Machinery Incident</option>
+                                    <option>Fire</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Location:</label>
+                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                                    <option>Shaft A - Level 3</option>
+                                    <option>Shaft B - Level 2</option>
+                                    <option>Processing Plant</option>
+                                    <option>Surface Operations</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Urgency:</label>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <button style="flex: 1; background-color: #28a745; color: white; border: none; padding: 8px; margin-right: 5px;">Low</button>
+                                    <button style="flex: 1; background-color: #ffc107; color: white; border: none; padding: 8px; margin-right: 5px;">Medium</button>
+                                    <button style="flex: 1; background-color: #dc3545; color: white; border: none; padding: 8px;">High</button>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Description:</label>
+                                <textarea style="width: 100%; height: 60px; padding: 8px; margin-top: 5px;" placeholder="Describe what you're seeing..."></textarea>
+                            </div>
+                            <div style="display: flex; margin-bottom: 15px;">
+                                <button style="flex: 1; background-color: #1a3a5f; color: white; border: none; padding: 10px; border-radius: 5px; margin-right: 5px;">
+                                    <span style="font-size: 1.2em;">📷</span> Photo
+                                </button>
+                                <button style="flex: 1; background-color: #1a3a5f; color: white; border: none; padding: 10px; border-radius: 5px;">
+                                    <span style="font-size: 1.2em;">🎤</span> Voice
+                                </button>
+                            </div>
+                            <div>
+                                <button style="background-color: #dc3545; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold;">REPORT EMERGENCY</button>
+                            </div>
+                            <div style="margin-top: 15px; text-align: center; font-size: 0.9em; color: #28a745;">
+                                <p><strong>Works offline underground</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Innovation & Differentiation -->
+        <div class="slide">
+            <h2>💡 Innovation & Differentiation</h2>
+            <div class="content-container">
+                <div class="text-content">
+                    <h3>What Makes Us Different</h3>
+                    <div class="innovation-item">
+                        <h3>Domain-specific</h3>
+                        <p>Tailored specifically for mining operations with industry-standard safety protocols</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h3>Smart Inputs</h3>
+                        <p>Uses natural language + dropdowns to auto-structure reports for faster processing</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h3>Location-Aware</h3>
+                        <p>Connects incident type to geographic mine sections for targeted response</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h3>Real-Time Reporting</h3>
+                        <p>Speeds up emergency responses with instant notifications to relevant personnel</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h3>Adaptable & Learning</h3>
+                        <p>Learns from repeated incidents to suggest mitigations and preventive measures</p>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <img src="https://www.cengn.ca/wp-content/uploads/2022/03/Smart-Mining-Infographic-1-1024x576.png" alt="Innovation Diagram" style="max-width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Team Collaboration -->
+        <div class="slide">
+            <h2>👥 Team Collaboration</h2>
+            <div class="content-container">
+                <div class="text-content">
+                    <h3>Roles:</h3>
+                    <div class="team-grid">
+                        <div class="team-item">
+                            <h3>AI Engineer</h3>
+                            <p>Built agent logic and integration points</p>
+                        </div>
+                        <div class="team-item">
+                            <h3>Safety Expert</h3>
+                            <p>Provided mining protocol data and compliance requirements</p>
+                        </div>
+                        <div class="team-item">
+                            <h3>Designer</h3>
+                            <p>UX optimized for safety workers in challenging environments</p>
+                        </div>
+                        <div class="team-item">
+                            <h3>PM/Strategist</h3>
+                            <p>Coordinated project and pitch development</p>
+                        </div>
+                    </div>
+                    <h3>Collaboration Highlights:</h3>
+                    <ul>
+                        <li>Combined mining domain expertise with AI innovation</li>
+                        <li>Worked cross-functionally: business, design, and tech</li>
+                        <li>Used structured problem-solving sessions under time pressure</li>
+                    </ul>
+                </div>
+                <div class="visual-content">
+                    <img src="https://www.shutterstock.com/image-photo/mining-engineers-discussing-project-while-600nw-2276129795.jpg" alt="Team Collaboration" style="max-width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Market & Business Viability -->
+        <div class="slide">
+            <h2>📈 Market & Business Viability</h2>
+            <div class="content-container">
+                <div class="text-content">
+                    <h3>Who Will Use This?</h3>
+                    <div class="market-item">
+                        <h3>Mining Companies</h3>
+                        <p>Improve safety records and reduce incident-related downtime</p>
+                    </div>
+                    <div class="market-item">
+                        <h3>Safety Officers</h3>
+                        <p>Streamline reporting and gain insights from incident patterns</p>
+                    </div>
+                    <div class="market-item">
+                        <h3>Government Inspection Agencies</h3>
+                        <p>Access standardized safety data for compliance monitoring</p>
+                    </div>
+
+                    <h3>Adoption Potential:</h3>
+                    <ul>
+                        <li>Easy integration into existing mine safety platforms</li>
+                        <li>High demand due to increasing safety regulation compliance</li>
+                        <li>Can expand to oil rigs, construction, and industrial plants</li>
+                    </ul>
+                </div>
+                <div class="visual-content">
+                    <img src="https://picterra.ch/wp-content/uploads/2023/03/mining-monitoring-dashboard-1.png" alt="Market Potential" style="max-width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Team Collaboration: Leveraging Collective Strengths -->
+        <div class="slide">
+            <h2>👥 Team Collaboration: Leveraging Collective Strengths</h2>
+            <div class="content-container">
+                <div class="text-content">
+                    <h3>How We Worked Together Throughout the Hackathon</h3>
+                    <div class="team-item">
+                        <h3>Agile Approach</h3>
+                        <p>We adopted a rapid prototyping methodology with daily stand-ups and frequent check-ins to ensure alignment.</p>
+                    </div>
+                    <div class="team-item">
+                        <h3>Unique Skills & Strengths</h3>
+                        <ul>
+                            <li><strong>Technical Expertise:</strong> AI/ML knowledge for pattern recognition in safety incidents</li>
+                            <li><strong>Domain Knowledge:</strong> Deep understanding of mining operations and safety protocols</li>
+                            <li><strong>Design Thinking:</strong> User-centered approach for intuitive interfaces in challenging environments</li>
+                            <li><strong>Business Acumen:</strong> Market analysis and value proposition development</li>
+                        </ul>
+                    </div>
+                    <div class="team-item">
+                        <h3>Cross-Disciplinary Collaboration</h3>
+                        <p>Our team bridged business, design, and engineering perspectives to create a holistic solution that addresses real-world needs.</p>
+                    </div>
+                    <div class="team-item">
+                        <h3>Structured Problem-Solving</h3>
+                        <p>We used a framework of Define → Ideate → Prototype → Test → Refine to tackle challenges methodically under time pressure.</p>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <img src="https://www.shutterstock.com/image-photo/diverse-group-mining-engineers-having-600nw-2276129801.jpg" alt="Team Collaboration" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                    <div style="background-color: #f0f0f0; padding: 15px; border-radius: 10px;">
+                        <h3 style="margin-top: 0; color: #1a3a5f;">Our Collaboration Framework</h3>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                            <div style="text-align: center; flex: 1;">
+                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">1</div>
+                                <p>Define</p>
+                            </div>
+                            <div style="text-align: center; flex: 1;">
+                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">2</div>
+                                <p>Ideate</p>
+                            </div>
+                            <div style="text-align: center; flex: 1;">
+                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">3</div>
+                                <p>Prototype</p>
+                            </div>
+                            <div style="text-align: center; flex: 1;">
+                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">4</div>
+                                <p>Test</p>
+                            </div>
+                            <div style="text-align: center; flex: 1;">
+                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">5</div>
+                                <p>Refine</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Why It Matters - Closing -->
+        <div class="slide">
+            <h2>🎯 Why Mine Safety Monitor Wins</h2>
+            <div class="closing-points">
+                <p>The <strong>Mine Safety Monitor</strong> isn't just a tool—it's a <span style="color: #dc3545; font-weight: bold;">lifesaving companion</span> in one of the world's most dangerous industries.</p>
+
+                <div style="background-color: rgba(26, 58, 95, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #1a3a5f; margin-top: 0;">Why This Solution Matters:</h3>
+                    <ul style="font-size: 1.1em; line-height: 1.6;">
+                        <li><strong>Lives Saved:</strong> Faster reporting = Faster response = Fewer fatalities</li>
+                        <li><strong>Cost Reduction:</strong> Preventing incidents saves millions in downtime and damages</li>
+                        <li><strong>Compliance Simplified:</strong> Automated documentation for regulatory requirements</li>
+                        <li><strong>Data-Driven Safety:</strong> Turning incident patterns into preventive measures</li>
+                    </ul>
+                </div>
+
+                <div class="closing-highlight" style="background-color: rgba(240, 173, 78, 0.2); padding: 20px; border-radius: 10px; text-align: center;">
+                    <p style="font-size: 1.4em; margin: 0;"><span style="color: #dc3545; font-weight: bold;">"Every minute saved in reporting</span> could be a life saved underground."</p>
+                </div>
+
+                <div style="margin-top: 20px; text-align: center; font-size: 1.2em;">
+                    <p>That's not just innovation—that's <span style="color: #28a745; font-weight: bold;">transformation</span>.</p>
+                    <p>That's why Mine Safety Monitor is a <span style="color: #f0ad4e; font-weight: bold; font-size: 1.2em;">WINNING SOLUTION</span>.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="https://www.shutterstock.com/image-photo/mining-safety-first-sign-600nw-1918290755.jpg" alt="Safety First" style="max-width: 100%; border-radius: 10px;">
+            </div>
+        </div>
+
+        <!-- Slide 9: Demo or Visual Walkthrough -->
+        <div class="slide">
+            <h2>📸 Demo & Visual Walkthrough</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Incident Input Interface</h3>
+                    <img src="https://www.researchgate.net/publication/358285551/figure/fig2/AS:1119992851206144@1643809020183/Interface-Android-Application-Software-Serial.png" alt="Incident Input Interface" style="max-width: 100%; border-radius: 5px;">
+                    <p>Simple, intuitive interface designed for quick reporting even in challenging environments</p>
+                </div>
+                <div class="demo-item">
+                    <h3>Types of Incidents</h3>
+                    <img src="https://www.cdc.gov/niosh/mining/images/content/researchprogram/hazardid.jpg" alt="Incident Types" style="max-width: 100%; border-radius: 5px;">
+                    <p>Comprehensive coverage of mining hazards: Gas Leaks, Rockfalls, Fires, Equipment Failures</p>
+                </div>
+                <div class="demo-item">
+                    <h3>Location Tagging</h3>
+                    <img src="https://www.researchgate.net/publication/358285551/figure/fig3/AS:1119992851210240@1643809020243/Interface-Android-Application-Software-Serial_Q640.jpg" alt="Location Tagging" style="max-width: 100%; border-radius: 5px;">
+                    <p>Precise location mapping to mine sections for targeted emergency response</p>
+                </div>
+                <div class="demo-item">
+                    <h3>Alert Generation</h3>
+                    <img src="https://www.campbellsci.eu/images/mining-dashboard.jpg" alt="Alert Generation" style="max-width: 100%; border-radius: 5px;">
+                    <p>Automated alerts with severity levels sent to appropriate personnel based on incident type</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prev-btn">Previous</button>
+        <span id="slide-indicator">Slide 1 of 9</span>
+        <button class="nav-button" id="next-btn">Next</button>
+        <a href="Mine_Safety_Monitor_Presentation.html" download="Mine_Safety_Monitor_Presentation.html" class="nav-button" style="background-color: #28a745; text-decoration: none; margin-left: 20px;">
+            <span style="margin-right: 5px;">⬇️</span> Download HTML Presentation
+        </a>
+        <button id="print-btn" class="nav-button" style="background-color: #17a2b8; margin-left: 10px;">
+            <span style="margin-right: 5px;">🖨️</span> Print as PDF
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const printBtn = document.getElementById('print-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            let currentSlide = 0;
+
+            function updateSlideIndicator() {
+                slideIndicator.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+            }
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+                updateSlideIndicator();
+            }
+
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            // Print functionality
+            printBtn.addEventListener('click', function() {
+                // Create a print-friendly version
+                const printContent = document.createElement('div');
+                printContent.style.width = '100%';
+                printContent.style.height = '100%';
+                printContent.style.position = 'fixed';
+                printContent.style.top = '0';
+                printContent.style.left = '0';
+                printContent.style.zIndex = '9999';
+                printContent.style.backgroundColor = 'white';
+
+                // Clone all slides and make them visible
+                slides.forEach(slide => {
+                    const clonedSlide = slide.cloneNode(true);
+                    clonedSlide.style.display = 'block';
+                    clonedSlide.style.pageBreakAfter = 'always';
+                    clonedSlide.style.height = 'auto';
+                    clonedSlide.style.minHeight = '100vh';
+                    clonedSlide.style.padding = '40px';
+                    clonedSlide.style.boxSizing = 'border-box';
+                    printContent.appendChild(clonedSlide);
+                });
+
+                // Add to body
+                document.body.appendChild(printContent);
+
+                // Print
+                window.print();
+
+                // Remove after printing
+                document.body.removeChild(printContent);
+            });
+
+            // Initialize
+            updateSlideIndicator();
+        });
+    </script>
+</body>
+</html>

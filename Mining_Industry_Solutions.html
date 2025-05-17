@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining & Heavy Industry Solutions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .presentation {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .slide {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+            min-height: 500px;
+        }
+        .title-slide {
+            background: linear-gradient(135deg, #1a3a5f, #0d2339);
+            color: white;
+            text-align: center;
+            padding: 100px 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2em;
+            color: #1a3a5f;
+            border-bottom: 2px solid #f0ad4e;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .title-slide h2 {
+            color: #f0ad4e;
+            border-bottom: none;
+        }
+        .pain-points {
+            background-color: #f9f9f9;
+        }
+        .pain-points ul {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .solution {
+            display: flex;
+            flex-direction: column;
+        }
+        .solution-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .solution-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #1a3a5f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 2em;
+        }
+        .solution-content {
+            display: flex;
+        }
+        .solution-description {
+            flex: 1;
+            padding-right: 30px;
+        }
+        .solution-visual {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .implementation {
+            background-color: #f5f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .implementation h3 {
+            color: #1a3a5f;
+            margin-top: 0;
+        }
+        .unique-twist {
+            background-color: #fff8e1;
+            border-left: 4px solid #f0ad4e;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .feasibility {
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .component {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .component-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #1a3a5f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1em;
+        }
+        .mock-app {
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 280px;
+            height: 500px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .app-header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .app-content {
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+        .mock-dashboard {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
+            background-color: white;
+        }
+        .dashboard-header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 10px 15px;
+        }
+        .dashboard-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            height: calc(100% - 40px);
+        }
+        .dashboard-card {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px;
+            flex: 1 0 calc(50% - 20px);
+            min-width: 120px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .nav-button {
+            background-color: #1a3a5f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .nav-button:hover {
+            background-color: #0d2339;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Title Slide -->
+        <div class="slide title-slide">
+            <h1>Mining & Heavy Industry Solutions</h1>
+            <h2>Innovative Digital Solutions for Critical Industry Challenges</h2>
+        </div>
+
+        <!-- Pain Points Slide -->
+        <div class="slide pain-points">
+            <h2>Industry Pain Points</h2>
+            <ul>
+                <li><strong>Safety Incidents:</strong> Slow reporting and response times</li>
+                <li><strong>Equipment Downtime:</strong> Unplanned failures costing millions</li>
+                <li><strong>Data Sharing:</strong> Inefficient communication across remote sites</li>
+                <li><strong>Compliance:</strong> Complex environmental and safety regulations</li>
+            </ul>
+        </div>
+
+        <!-- Solution 1 Slide -->
+        <div class="slide solution">
+            <div class="solution-header">
+                <div class="solution-icon">1</div>
+                <h2>Safety Incident Copilot</h2>
+            </div>
+            <div class="solution-content">
+                <div class="solution-description">
+                    <p>A Power App for field workers to report safety incidents via voice/text (offline-capable, syncing when online). A Copilot Studio bot analyzes reports for patterns and prioritizes alerts.</p>
+
+                    <div class="implementation">
+                        <h3>Implementation Components:</h3>
+                        <div class="component">
+                            <div class="component-icon">PA</div>
+                            <div><strong>Power App:</strong> Mobile interface for incident logging (text/voice input, photo upload)</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">CS</div>
+                            <div><strong>Copilot Studio:</strong> AI bot processes reports, identifies trends, sends prioritized alerts</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">PF</div>
+                            <div><strong>Power Automate:</strong> Routes alerts to supervisors via Teams or email</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">BI</div>
+                            <div><strong>Power BI:</strong> Dashboard showing incident trends by location and time</div>
+                        </div>
+                    </div>
+
+                    <div class="unique-twist">
+                        <strong>Unique Twist:</strong> Gamification—workers earn "safety points" for timely reporting, displayed on a leaderboard to encourage engagement.
+                    </div>
+
+                    <div class="feasibility">
+                        <strong>Feasibility:</strong> Achievable within 8.5 hours using pre-built templates and basic configurations.
+                    </div>
+                </div>
+                <div class="solution-visual">
+                    <div class="mock-app">
+                        <div class="app-header">
+                            <h3>Safety Incident Reporter</h3>
+                        </div>
+                        <div class="app-content">
+                            <h4>Report New Incident</h4>
+                            <div style="margin-bottom: 15px;">
+                                <label>Incident Type:</label>
+                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                                    <option>Near Miss</option>
+                                    <option>Minor Injury</option>
+                                    <option>Equipment Damage</option>
+                                    <option>Environmental</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Location:</label>
+                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                                    <option>Zone 1</option>
+                                    <option>Zone 2</option>
+                                    <option>Zone 3</option>
+                                    <option>Zone 4</option>
+                                    <option>Zone 5</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label>Description:</label>
+                                <textarea style="width: 100%; height: 80px; padding: 8px; margin-top: 5px;"></textarea>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <button style="background-color: #1a3a5f; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px;">Add Photo</button>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <button style="background-color: #f0ad4e; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px;">Record Voice Description</button>
+                            </div>
+                            <div>
+                                <button style="background-color: #28a745; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px;">Submit Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 2 Slide -->
+        <div class="slide solution">
+            <div class="solution-header">
+                <div class="solution-icon">2</div>
+                <h2>Predictive Maintenance Dashboard</h2>
+            </div>
+            <div class="solution-content">
+                <div class="solution-description">
+                    <p>An AI-driven dashboard predicting equipment failures using inspection data, reducing costly downtime and improving maintenance planning.</p>
+
+                    <div class="implementation">
+                        <h3>Implementation Components:</h3>
+                        <div class="component">
+                            <div class="component-icon">PA</div>
+                            <div><strong>Power App:</strong> Technicians input inspection data (vibration levels, temperature, etc.)</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">CS</div>
+                            <div><strong>Copilot Studio:</strong> Bot answers technician queries about equipment status</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">BI</div>
+                            <div><strong>Power BI:</strong> Visualizes predictions (e.g., "Pump 3: 80% failure risk in 7 days")</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">PF</div>
+                            <div><strong>Power Automate:</strong> Triggers maintenance tickets in existing systems (e.g., SAP)</div>
+                        </div>
+                    </div>
+
+                    <div class="unique-twist">
+                        <strong>Unique Twist:</strong> AR integration—technicians scan equipment with a phone camera (via Power App) to pull real-time predictions.
+                    </div>
+
+                    <div class="feasibility">
+                        <strong>Feasibility:</strong> Predictive model can be simplified (rule-based thresholds) to fit hackathon timeline. Focus on core dashboard for demo.
+                    </div>
+                </div>
+                <div class="solution-visual">
+                    <div class="mock-dashboard">
+                        <div class="dashboard-header">
+                            <h3>Predictive Maintenance Dashboard</h3>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="dashboard-card" style="background-color: #ffecb3;">
+                                <h4>Pump 3</h4>
+                                <p><strong>Risk Level:</strong> 80%</p>
+                                <p><strong>Est. Failure:</strong> 7 days</p>
+                                <p style="color: #ff8f00;">⚠️ High Risk</p>
+                            </div>
+                            <div class="dashboard-card" style="background-color: #ffecb3;">
+                                <h4>Conveyor B2</h4>
+                                <p><strong>Risk Level:</strong> 65%</p>
+                                <p><strong>Est. Failure:</strong> 12 days</p>
+                                <p style="color: #ff8f00;">⚠️ Medium Risk</p>
+                            </div>
+                            <div class="dashboard-card" style="background-color: #e8f5e9;">
+                                <h4>Crusher C1</h4>
+                                <p><strong>Risk Level:</strong> 15%</p>
+                                <p><strong>Est. Failure:</strong> 45+ days</p>
+                                <p style="color: #2e7d32;">✓ Low Risk</p>
+                            </div>
+                            <div class="dashboard-card" style="background-color: #e8f5e9;">
+                                <h4>Drill D4</h4>
+                                <p><strong>Risk Level:</strong> 10%</p>
+                                <p><strong>Est. Failure:</strong> 60+ days</p>
+                                <p style="color: #2e7d32;">✓ Low Risk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution 3 Slide -->
+        <div class="slide solution">
+            <div class="solution-header">
+                <div class="solution-icon">3</div>
+                <h2>Compliance Audit Assistant</h2>
+            </div>
+            <div class="solution-content">
+                <div class="solution-description">
+                    <p>A Copilot Studio bot guides supervisors through environmental/safety audits, flagging non-compliance risks and streamlining the audit process.</p>
+
+                    <div class="implementation">
+                        <h3>Implementation Components:</h3>
+                        <div class="component">
+                            <div class="component-icon">CS</div>
+                            <div><strong>Copilot Studio:</strong> Bot asks audit questions and logs responses</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">PA</div>
+                            <div><strong>Power App:</strong> Mobile form for audit input with photo evidence</div>
+                        </div>
+                        <div class="component">
+                            <div class="component-icon">PF</div>
+                            <div><strong>Power Automate:</strong> Flags high-risk issues to compliance teams via Teams</div>
+                        </div>
+                    </div>
+
+                    <div class="unique-twist">
+                        <strong>Unique Twist:</strong> Multilingual support for diverse workforces (e.g., English, Zulu, Xhosa).
+                    </div>
+
+                    <div class="feasibility">
+                        <strong>Feasibility:</strong> Straightforward to build with Copilot Studio's conversational templates and Power App forms. Multilingual support is native in Copilot Studio.
+                    </div>
+                </div>
+                <div class="solution-visual">
+                    <div class="mock-app">
+                        <div class="app-header">
+                            <h3>Compliance Audit Assistant</h3>
+                        </div>
+                        <div class="app-content">
+                            <div style="background-color: #f5f5f5; border-radius: 10px; padding: 10px; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #1a3a5f;"><strong>Audit Bot:</strong> Is spill containment equipment in place at the chemical storage area?</p>
+                            </div>
+                            <div style="background-color: #e8f5e9; border-radius: 10px; padding: 10px; margin-bottom: 15px; text-align: right;">
+                                <p style="margin: 0;"><strong>You:</strong> Yes, but one kit needs replacement</p>
+                            </div>
+                            <div style="background-color: #f5f5f5; border-radius: 10px; padding: 10px; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #1a3a5f;"><strong>Audit Bot:</strong> Please take a photo of the kit that needs replacement.</p>
+                            </div>
+                            <div style="margin: 15px 0; text-align: center;">
+                                <button style="background-color: #1a3a5f; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Take Photo</button>
+                            </div>
+                            <div style="background-color: #f5f5f5; border-radius: 10px; padding: 10px; margin-bottom: 15px;">
+                                <p style="margin: 0; color: #1a3a5f;"><strong>Audit Bot:</strong> Are all emergency exits clearly marked and unobstructed?</p>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                                <button style="background-color: #28a745; color: white; border: none; padding: 10px; width: 48%; border-radius: 5px;">Yes</button>
+                                <button style="background-color: #dc3545; color: white; border: none; padding: 10px; width: 48%; border-radius: 5px;">No</button>
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <select style="width: 100%; padding: 8px;">
+                                    <option>English</option>
+                                    <option>Zulu</option>
+                                    <option>Xhosa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Slide -->
+        <div class="slide title-slide" style="background: linear-gradient(135deg, #1a3a5f, #0d2339);">
+            <h1>Thank You</h1>
+            <h2>Innovative Solutions for Mining & Heavy Industry</h2>
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+                <div style="background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Safety Incident Copilot</h3>
+                    <p>Faster reporting, better insights</p>
+                </div>
+                <div style="background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Predictive Maintenance</h3>
+                    <p>Reduce costly downtime</p>
+                </div>
+                <div style="background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                    <h3>Compliance Assistant</h3>
+                    <p>Streamlined audits</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prev-btn">Previous</button>
+        <button class="nav-button" id="next-btn">Next</button>
+    </div>
+
+    <script>
+        // Script to enable navigation between slides
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.style.display = 'block';
+                    } else {
+                        slide.style.display = 'none';
+                    }
+                });
+            }
+
+            // Initialize with first slide
+            showSlide(0);
+
+            // Add navigation functionality
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
