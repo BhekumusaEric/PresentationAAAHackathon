@@ -3,671 +3,1671 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine Safety Monitor - Copilot Agent</title>
+    <title>MindScope - Revolutionary Mental Health AI for Africa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .presentation {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
         .slide {
-            padding: 40px;
-            border-bottom: 1px solid #eee;
-            min-height: 500px;
+            min-height: 100vh;
             display: none;
+            padding: 1rem 1.5rem; /* Reduced top padding since nav is hidden */
+            zoom: 0.8; /* Reduce zoom to fit content better */
+            transform-origin: center top;
         }
         .slide.active {
-            display: block;
-        }
-        .title-slide {
-            background: linear-gradient(135deg, #1a3a5f, #0d2339);
-            color: white;
-            text-align: center;
-            padding: 100px 40px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 2em;
-            color: #1a3a5f;
-            border-bottom: 2px solid #f0ad4e;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        .title-slide h2 {
-            color: #f0ad4e;
-            border-bottom: none;
-        }
-        .content-container {
-            display: flex;
-            margin-top: 30px;
-        }
-        .text-content {
-            flex: 1;
-            padding-right: 30px;
-        }
-        .visual-content {
-            flex: 1;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            padding: 20px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
         }
-        .problem-item, .solution-item, .innovation-item, .team-item, .market-item {
-            background-color: #f9f9f9;
-            border-left: 4px solid #f0ad4e;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 0 5px 5px 0;
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .problem-item h3, .solution-item h3, .innovation-item h3, .team-item h3, .market-item h3 {
-            margin-top: 0;
-            color: #1a3a5f;
+        .mental-health-gradient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
         }
-        .icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: #f0ad4e;
+        .crisis-gradient {
+            background: linear-gradient(135deg, #dc2626 0%, #f59e0b 100%);
         }
-        .navigation {
-            display: flex;
-            justify-content: center;
+        .mindscope-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        }
+        .brain-animation {
+            animation: brainPulse 3s ease-in-out infinite;
+        }
+        @keyframes brainPulse {
+            0%, 100% { transform: scale(1); filter: hue-rotate(0deg); }
+            50% { transform: scale(1.1); filter: hue-rotate(30deg); }
+        }
+        .demo-phone {
+            width: 300px;
+            height: 600px;
+            background: #1f2937;
+            border-radius: 30px;
             padding: 20px;
-            background-color: #f9f9f9;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        .nav-button {
-            background-color: #1a3a5f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        .nav-button:hover {
-            background-color: #0d2339;
-        }
-        .mock-app {
-            border: 2px solid #ddd;
-            border-radius: 15px;
+        .demo-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
-            width: 280px;
-            height: 500px;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
         }
-        .app-header {
-            background-color: #1a3a5f;
-            color: white;
-            padding: 15px;
-            text-align: center;
+        .typing-animation {
+            animation: typing 2s infinite;
         }
-        .app-content {
-            padding: 15px;
-            height: calc(100% - 50px);
-            overflow-y: auto;
+        @keyframes typing {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
         }
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+        .pulse-animation {
+            animation: pulse 2s infinite;
         }
-        .closing-points {
-            text-align: center;
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin: 40px 0;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        .closing-highlight {
-            font-size: 1.4em;
-            color: #f0ad4e;
-            font-weight: bold;
-            margin: 20px 0;
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
         }
-        .demo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .demo-item {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .demo-item h3 {
-            margin-top: 0;
-            color: #1a3a5f;
-            border-bottom: 2px solid #f0ad4e;
-            padding-bottom: 5px;
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Print styles */
-        @media print {
-            body {
-                background-color: white;
-            }
-            .navigation {
-                display: none;
-            }
-            .presentation {
-                box-shadow: none;
-                max-width: 100%;
-            }
-            .slide {
-                page-break-after: always;
-                display: block !important;
-                min-height: auto;
-                border: none;
-            }
-            .content-container {
-                display: block;
-            }
-            .text-content, .visual-content {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            .visual-content {
-                background-color: white;
-            }
-            .mock-app {
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            .demo-grid {
-                grid-template-columns: 1fr;
-            }
-            .title-slide {
-                background: white;
-                color: #1a3a5f;
-                border: 2px solid #1a3a5f;
-            }
-            .title-slide h2 {
-                color: #1a3a5f;
-            }
+        /* Auto-hide navigation bar - improved version */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Show nav only when mouse is in top 80px of screen */
+        body:hover nav {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Hide nav when mouse moves away from top area */
+        .slide:hover nav {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Override to show nav when specifically hovering over nav area */
+        nav:hover {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
-<body>
-    <div class="presentation">
-        <!-- Slide 1: Title Slide -->
-        <div class="slide title-slide active">
-            <h1>Mine Safety Monitor</h1>
-            <h2>A Copilot Agent Designed for Safer Mining Environments</h2>
-            <div style="margin-top: 40px;">
-                <p><strong>Team Name:</strong> Safety Innovators</p>
-                <p><strong>Date:</strong> May 17, 2025</p>
-                <p><strong>Location:</strong> AAA Hackathon – Bryanston, South Africa</p>
-            </div>
-        </div>
-
-        <!-- Slide 2: Problem Identification -->
-        <div class="slide">
-            <h2>🚨 The Deadly Reality of Mining</h2>
-            <div style="background-color: #dc3545; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                <div style="font-size: 2.5em; font-weight: bold; margin-bottom: 10px;">12,000+</div>
-                <p style="font-size: 1.2em; margin: 0;">Mining fatalities worldwide each year</p>
-            </div>
-
-            <div class="content-container">
-                <div class="text-content">
-                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
-                        <h3>Life-Threatening Hazards</h3>
-                        <p>Mining operations face deadly hazards daily: toxic gas leaks, catastrophic rockfalls, machinery accidents, and underground fires that can trap workers with limited escape routes.</p>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Video Intro Section -->
+    <div id="videoIntro" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+        <div class="text-center max-w-4xl mx-auto p-8">
+            <!-- Video Container -->
+            <div class="mb-8">
+                <video id="introVideo" width="900" height="506" controls autoplay muted class="rounded-lg shadow-2xl mx-auto">
+                    <source src="mindscope-intro.mp4" type="video/mp4">
+                    <source src="mindscope-intro.webm" type="video/webm">
+                    <source src="mindscope-intro.mov" type="video/quicktime">
+                    <!-- Fallback for browsers that don't support video -->
+                    <div class="bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 p-12 rounded-lg text-white">
+                        <div class="mb-6">
+                            <i class="fas fa-brain text-8xl text-white mb-4 brain-animation"></i>
+                        </div>
+                        <h2 class="text-5xl font-bold mb-6">🧠 MindScope</h2>
+                        <p class="text-2xl mb-6">Revolutionary Mental Health AI for Africa</p>
+                        <p class="text-xl mb-4">Breaking the silence, saving lives, transforming mental healthcare</p>
+                        <div class="text-lg text-purple-200">
+                            <p>Every 40 seconds, someone dies by suicide globally.</p>
+                            <p class="font-bold">In Africa, we're changing that statistic.</p>
+                        </div>
                     </div>
+                </video>
+            </div>
 
-                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
-                        <h3>Devastating Impact</h3>
-                        <ul style="margin-top: 10px;">
-                            <li><strong>Human Cost:</strong> Thousands of preventable deaths and injuries annually</li>
-                            <li><strong>Economic Burden:</strong> $20+ billion in global losses from mining accidents</li>
-                            <li><strong>Operational Impact:</strong> Each major incident can halt operations for weeks</li>
+            <!-- Video Upload Instructions -->
+            <!-- <div class="bg-gray-900 bg-opacity-90 p-8 rounded-lg border border-purple-400 mb-8">
+                <h3 class="text-3xl font-bold text-purple-300 mb-6">📹 Add Your Intro Video</h3>
+                <p class="text-gray-300 mb-6 text-lg">To add your powerful intro video:</p>
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div>
+                        <h4 class="text-xl font-bold text-cyan-300 mb-3">📁 File Setup</h4>
+                        <ol class="text-gray-300 space-y-2">
+                            <li>1. Save your video as <code class="bg-gray-700 px-2 py-1 rounded text-cyan-200">mindscope-intro.mp4</code></li>
+                            <li>2. Place it in the <code class="bg-gray-700 px-2 py-1 rounded text-cyan-200">presentation</code> folder</li>
+                            <li>3. Supported formats: MP4, WebM, MOV</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-pink-300 mb-3">🎬 Recommendations</h4>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• Duration: 30-90 seconds</li>
+                            <li>• Resolution: 1920x1080 (Full HD)</li>
+                            <li>• Content: Mental health crisis, solution teaser</li>
+                            <li>• End with: "Let's save lives together"</li>
                         </ul>
                     </div>
+                </div>
+            </div> -->
 
-                    <div class="problem-item" style="border-left: 4px solid #dc3545;">
-                        <h3>Critical Response Gap</h3>
-                        <p><strong>Every minute matters in mining emergencies:</strong></p>
-                        <ul>
-                            <li>Current manual reporting systems cause 15-40 minute delays</li>
-                            <li>For trapped miners, survival rates drop 50% after the first hour</li>
-                            <li>Gas exposure fatalities increase 70% with delayed reporting</li>
-                        </ul>
+            <!-- Skip/Continue Buttons -->
+            <div class="space-x-6">
+                <button onclick="skipVideo()" class="bg-gray-600 hover:bg-gray-500 px-10 py-4 rounded-lg text-white font-bold text-lg transition-all">
+                    Skip Video
+                </button>
+                <button onclick="startPresentation()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-10 py-4 rounded-lg text-white font-bold text-lg pulse-animation transition-all">
+                    🚀 Start Presentation
+                </button>
+            </div>
+
+            <!-- Auto-advance notice -->
+            <p class="text-gray-400 text-sm mt-6">Video will automatically advance to presentation when finished</p>
+        </div>
+    </div>
+
+    <!-- Main Presentation Container (Hidden Initially) -->
+    <div id="presentationContainer" style="display: none;">
+        <!-- Auto-hide Navigation -->
+        <nav>
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="text-xl font-bold text-purple-400">MindScope</div>
+                <div class="flex space-x-4">
+                    <button onclick="previousSlide()" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="slideCounter" class="text-gray-300">1 / 13</span>
+                    <button onclick="nextSlide()" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Slide 1: Title -->
+    <section class="slide active mindscope-gradient">
+        <div class="text-center max-w-6xl mx-auto">
+            <!-- Problem Statement Banner -->
+            <div class="bg-red-900 bg-opacity-40 border-2 border-red-400 rounded-lg p-6 mb-8 backdrop-blur-sm">
+                <h3 class="text-2xl font-bold text-red-200 mb-4">
+                    <i class="fas fa-exclamation-triangle mr-3 text-yellow-400"></i>
+                    Critical Problem Statement
+                </h3>
+                <p class="text-lg text-white leading-relaxed">
+                    <strong>People in under-resourced communities face mounting mental health challenges</strong>, exacerbated by stigma, lack of access to care, and social pressures. There is a shortage of culturally relevant, confidential support platforms. <span class="text-yellow-200 font-bold">A digital or hybrid solution is needed to provide safe, relatable, and accessible mental health support tailored to young people.</span>
+                </p>
+            </div>
+
+            <div class="mb-8">
+                <i class="fas fa-brain text-8xl text-white mb-4 brain-animation"></i>
+            </div>
+            <h1 class="text-6xl font-bold mb-6 slide-in bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">MindScope</h1>
+            <h2 class="text-3xl mb-8 text-purple-100 slide-in">Revolutionary Mental Health AI for Africa</h2>
+            <p class="text-xl mb-8 text-purple-100 slide-in">Breaking the silence, saving lives, transforming mental healthcare across the continent</p>
+
+            <!-- Stunning visual elements -->
+            <div class="flex justify-center space-x-12 text-lg mb-8">
+                <div class="text-center bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-shield-alt text-3xl mb-3 text-cyan-200"></i>
+                    <p class="font-bold">100% Private</p>
+                    <p class="text-sm text-purple-200">Your mind, your data</p>
+                </div>
+                <div class="text-center bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-heart text-3xl mb-3 text-pink-200"></i>
+                    <p class="font-bold">Crisis Prevention</p>
+                    <p class="text-sm text-purple-200">Real-time intervention</p>
+                </div>
+                <div class="text-center bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-mobile-alt text-3xl mb-3 text-green-200"></i>
+                    <p class="font-bold">Universal Access</p>
+                    <p class="text-sm text-purple-200">Any phone, anywhere</p>
+                </div>
+                <div class="text-center bg-white bg-opacity-10 p-6 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-globe-africa text-3xl mb-3 text-yellow-200"></i>
+                    <p class="font-bold">Africa-First</p>
+                    <p class="text-sm text-purple-200">Built for our continent</p>
+                </div>
+            </div>
+
+            <!-- Powerful tagline -->
+            <div class="bg-black bg-opacity-30 p-6 rounded-lg">
+                <p class="text-3xl font-bold text-white">Every 40 seconds, someone dies by suicide globally.</p>
+                <p class="text-2xl text-purple-200 mt-2">In Africa, we're changing that statistic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Mental Health Crisis - The Silent Epidemic -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 text-center text-red-400">The Silent Epidemic: Africa's Mental Health Crisis</h2>
+
+            <!-- Devastating Real Story -->
+            <div class="bg-red-900 bg-opacity-20 p-6 rounded-lg border border-red-400 mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-red-300">
+                    <i class="fas fa-quote-left mr-3"></i>
+                    Real Story from Cape Town University
+                </h3>
+                <p class="text-lg italic">"I was struggling with depression and anxiety during my final year. I felt completely alone and had thoughts of ending it all. There was no one to talk to at 2 AM when the thoughts were loudest. I almost didn't make it." - Thabo, 22, UCT Student</p>
+                <p class="text-sm mt-2 text-red-200">Source: South African College Student Mental Health Survey, 2023</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="space-y-6">
+                        <div class="bg-red-900 bg-opacity-30 p-6 rounded-lg border border-red-500">
+                            <h3 class="text-2xl font-bold mb-4 text-red-300">
+                                <i class="fas fa-skull-crossbones mr-3"></i>
+                                Suicide Crisis
+                            </h3>
+                            <p class="text-lg mb-2"><strong>23 people die by suicide daily</strong> in South Africa - that's one every 62 minutes</p>
+                            <p class="text-sm text-red-200">Source: SA Depression & Anxiety Group, 2024</p>
+                        </div>
+
+                        <div class="bg-orange-900 bg-opacity-30 p-6 rounded-lg border border-orange-500">
+                            <h3 class="text-2xl font-bold mb-4 text-orange-300">
+                                <i class="fas fa-user-md mr-3"></i>
+                                Mental Health Professional Shortage
+                            </h3>
+                            <p class="text-lg mb-2">Only <strong>0.28 psychiatrists per 100,000 people</strong> vs WHO recommendation of 1 per 100,000</p>
+                            <p class="text-sm text-orange-200">Source: WHO Mental Health Atlas, 2023</p>
+                        </div>
+
+                        <div class="bg-purple-900 bg-opacity-30 p-6 rounded-lg border border-purple-500">
+                            <h3 class="text-2xl font-bold mb-4 text-purple-300">
+                                <i class="fas fa-eye-slash mr-3"></i>
+                                Stigma & Silence
+                            </h3>
+                            <p class="text-lg mb-2"><strong>75% of people</strong> with mental health conditions receive no treatment due to stigma and lack of access</p>
+                            <p class="text-sm text-purple-200">Source: SA Journal of Psychiatry, 2023</p>
+                        </div>
+
+                        <div class="bg-yellow-900 bg-opacity-30 p-6 rounded-lg border border-yellow-500">
+                            <h3 class="text-2xl font-bold mb-4 text-yellow-300">
+                                <i class="fas fa-mobile-alt mr-3"></i>
+                                Digital Exclusion
+                            </h3>
+                            <p class="text-lg mb-2">Existing mental health apps ignore <strong>60% of South Africans</strong> who use feature phones</p>
+                            <p class="text-sm text-yellow-200">Source: StatsSA Digital Divide Report, 2023</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="visual-content">
-                    <img src="https://www.cdc.gov/niosh/mining/UserFiles/images/mining-safety-research.jpg" alt="Mining Safety Hazards" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
-
-                    <div style="background-color: #f8d7da; border: 1px solid #dc3545; padding: 15px; border-radius: 10px;">
-                        <h3 style="color: #dc3545; margin-top: 0;">The Deadly Timeline</h3>
-                        <div style="display: flex; margin-top: 10px;">
-                            <div style="flex: 1; text-align: center; border-right: 1px solid #dc3545; padding-right: 10px;">
-                                <div style="font-size: 1.8em; font-weight: bold; color: #dc3545;">15-40 min</div>
-                                <p>Current reporting delay</p>
+                <div class="text-center">
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <h3 class="text-3xl font-bold mb-6 text-red-400">Devastating Statistics</h3>
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <div class="text-5xl font-bold text-red-500">8,395</div>
+                                <p class="text-lg">suicide deaths annually in SA</p>
+                                <p class="text-sm text-gray-400">2nd highest rate in Africa</p>
                             </div>
-                            <div style="flex: 1; text-align: center; padding-left: 10px;">
-                                <div style="font-size: 1.8em; font-weight: bold; color: #dc3545;">60 min</div>
-                                <p>Critical survival window</p>
+                            <div class="text-center">
+                                <div class="text-5xl font-bold text-orange-500">16.5%</div>
+                                <p class="text-lg">of South Africans have depression</p>
+                                <p class="text-sm text-gray-400">Nearly 10 million people</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-5xl font-bold text-purple-500">8.1%</div>
+                                <p class="text-lg">have anxiety disorders</p>
+                                <p class="text-sm text-gray-400">4.8 million people suffering</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-5xl font-bold text-yellow-500">75%</div>
+                                <p class="text-lg">receive no treatment</p>
+                                <p class="text-sm text-gray-400">Silent suffering in isolation</p>
                             </div>
                         </div>
-                        <p style="margin-top: 15px; text-align: center; font-weight: bold;">Current systems waste precious minutes when seconds count</p>
+
+                        <!-- Youth Crisis -->
+                        <div class="mt-8 bg-red-900 bg-opacity-50 p-4 rounded border border-red-500">
+                            <h4 class="text-xl font-bold text-red-300 mb-2">Youth Mental Health Emergency</h4>
+                            <div class="text-3xl font-bold text-red-400">41%</div>
+                            <p class="text-sm">of university students have suicidal thoughts</p>
+                            <p class="text-xs text-red-200">Source: Higher Education Mental Health Survey, 2023</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Slide 3: Our Solution -->
-        <div class="slide">
-            <h2>🤖 Mine Safety Monitor: Life-Saving Response</h2>
-
-            <div style="background-color: #28a745; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
-                <div style="font-size: 1.8em; font-weight: bold; margin-bottom: 5px;">Reducing Response Time by 85%</div>
-                <p style="font-size: 1.1em; margin: 0;">From 30+ minutes to under 5 minutes</p>
+    <!-- Slide 3: The 5 Ws - Mental Health Revolution -->
+    <section class="slide" style="background: linear-gradient(135deg, #ff006e 0%, #8338ec 25%, #3a86ff 50%, #06ffa5 75%, #ffbe0b 100%);">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold text-white drop-shadow-2xl mb-4">
+                    <span class="bg-black bg-opacity-70 px-8 py-4 rounded-2xl border-2 border-white shadow-2xl inline-block">
+                        🎯 The 5 Ws: Mental Health Revolution Framework
+                    </span>
+                </h2>
+                <p class="text-xl text-white font-semibold bg-white bg-opacity-20 px-6 py-2 rounded-lg inline-block backdrop-blur-sm">
+                    Understanding the complete picture of Africa's mental health crisis
+                </p>
             </div>
 
-            <div class="content-container">
-                <div class="text-content">
-                    <h3 style="color: #28a745;">How It Saves Lives:</h3>
-
-                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
-                        <h3 style="margin-top: 0; color: #28a745;">Instant Reporting</h3>
-                        <p>One-tap incident reporting with voice input for hands-free operation in emergencies</p>
-                        <p><strong>Impact:</strong> <span style="color: #28a745;">Cuts reporting time from minutes to seconds</span></p>
-                    </div>
-
-                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
-                        <h3 style="margin-top: 0; color: #28a745;">Intelligent Prioritization</h3>
-                        <p>AI analyzes incident severity and automatically alerts appropriate response teams</p>
-                        <p><strong>Impact:</strong> <span style="color: #28a745;">Critical incidents get immediate attention</span></p>
-                    </div>
-
-                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 0 5px 5px 0;">
-                        <h3 style="margin-top: 0; color: #28a745;">Predictive Safety</h3>
-                        <p>Analyzes patterns to identify high-risk areas before incidents occur</p>
-                        <p><strong>Impact:</strong> <span style="color: #28a745;">Prevents accidents before they happen</span></p>
-                    </div>
-
-                    <div style="background-color: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; border-radius: 0 5px 5px 0;">
-                        <h3 style="margin-top: 0; color: #28a745;">Offline Capability</h3>
-                        <p>Works underground with no connectivity, syncing when connection is restored</p>
-                        <p><strong>Impact:</strong> <span style="color: #28a745;">No dead zones for safety reporting</span></p>
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- WHO -->
+                <div class="bg-gradient-to-br from-cyan-400 to-blue-600 p-8 rounded-xl border-4 border-white shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <h3 class="text-4xl font-bold mb-6 text-white drop-shadow-lg">
+                        <i class="fas fa-users mr-4 text-yellow-300"></i>WHO
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="text-xl text-white font-semibold"><strong class="text-yellow-200">10 million South Africans</strong> suffering from depression and anxiety</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-yellow-200">University students</strong> - 41% have suicidal thoughts</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-yellow-200">Rural communities</strong> with zero mental health professionals</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-yellow-200">Feature phone users</strong> excluded from mental health apps</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-yellow-200">Crisis survivors</strong> needing 24/7 support</p>
                     </div>
                 </div>
 
-                <div class="visual-content">
-                    <div class="mock-app">
-                        <div class="app-header">
-                            <h3>Mine Safety Monitor</h3>
+                <!-- WHAT -->
+                <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-xl border-4 border-white shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <h3 class="text-4xl font-bold mb-6 text-white drop-shadow-lg">
+                        <i class="fas fa-brain mr-4 text-cyan-300"></i>WHAT
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="text-xl text-white font-semibold"><strong class="text-cyan-200">AI-powered mental health companion</strong> that understands African context</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-cyan-200">Crisis detection & intervention</strong> system preventing suicides</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-cyan-200">SMS/USSD therapy</strong> for feature phones (world's first)</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-cyan-200">Privacy-first processing</strong> - your thoughts stay private</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-cyan-200">Culturally-aware AI</strong> trained on African mental health data</p>
+                    </div>
+                </div>
+
+                <!-- WHEN -->
+                <div class="bg-gradient-to-br from-pink-500 to-red-600 p-8 rounded-xl border-4 border-white shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <h3 class="text-4xl font-bold mb-6 text-white drop-shadow-lg">
+                        <i class="fas fa-clock mr-4 text-green-300"></i>WHEN
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="text-xl text-white font-semibold"><strong class="text-green-200">3 AM crisis moments</strong> - when thoughts are loudest</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-green-200">24/7 availability</strong> - mental health doesn't wait</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-green-200">Real-time intervention</strong> - seconds can save lives</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-green-200">Daily check-ins</strong> - preventing crisis before it happens</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-green-200">Exam periods</strong> - when student stress peaks</p>
+                    </div>
+                </div>
+
+                <!-- WHERE -->
+                <div class="bg-gradient-to-br from-green-500 to-teal-600 p-8 rounded-xl border-4 border-white shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <h3 class="text-4xl font-bold mb-6 text-white drop-shadow-lg">
+                        <i class="fas fa-map-marker-alt mr-4 text-orange-300"></i>WHERE
+                    </h3>
+                    <div class="space-y-4">
+                        <p class="text-xl text-white font-semibold"><strong class="text-orange-200">University campuses</strong> - where 41% have suicidal thoughts</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-orange-200">Rural areas</strong> - with zero mental health professionals</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-orange-200">Your pocket</strong> - any phone, anywhere in Africa</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-orange-200">Local servers</strong> - data never leaves the continent</p>
+                        <p class="text-xl text-white font-semibold"><strong class="text-orange-200">Expanding across Africa</strong> - starting with SADC region</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WHY - The Life-Saving Mission -->
+            <div class="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 p-10 rounded-2xl border-4 border-white shadow-2xl">
+                <h3 class="text-5xl font-bold mb-8 text-white text-center drop-shadow-lg">
+                    <i class="fas fa-heart mr-4 text-pink-200 pulse-animation"></i>WHY - Every Life Matters
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8 text-center mb-8">
+                    <div class="bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-5xl font-bold text-white mb-4 drop-shadow-lg">23 Lives Daily</div>
+                        <p class="text-xl text-white font-semibold">Every day, 23 people die by suicide in South Africa. That's one every 62 minutes. <strong class="text-yellow-200">We can prevent this.</strong></p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Silent Suffering</div>
+                        <p class="text-xl text-white font-semibold">75% of people with mental health conditions receive no treatment. <strong class="text-yellow-200">They suffer in silence, alone.</strong></p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Digital Apartheid</div>
+                        <p class="text-xl text-white font-semibold">Mental health apps ignore 60% of Africans who use feature phones. <strong class="text-yellow-200">We're ending this exclusion.</strong></p>
+                    </div>
+                </div>
+
+                <div class="text-center bg-black bg-opacity-50 p-8 rounded-2xl border-2 border-yellow-400">
+                    <p class="text-4xl font-bold text-white drop-shadow-lg">
+                        <span class="text-yellow-300">🚀 We're not just building an app</span> -
+                        <span class="text-pink-300">we're saving lives</span> and
+                        <span class="text-cyan-300">breaking the silence</span> around mental health in Africa
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: MindScope - Revolutionary Mental Health Solution -->
+    <section class="slide mindscope-gradient">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-5xl font-bold mb-8 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">MindScope: Breaking Mental Health Barriers</h2>
+            <p class="text-2xl mb-12 text-purple-100">The world's first privacy-first mental health AI that works on ANY phone</p>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-cyan-300">
+                    <i class="fas fa-brain text-6xl mb-4 text-cyan-200 brain-animation"></i>
+                    <h3 class="text-2xl font-bold mb-4">AI Mental Health Companion</h3>
+                    <p class="text-lg mb-4">Culturally-aware AI trained on African mental health patterns and language</p>
+                    <div class="bg-cyan-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>Unlike BetterHelp/Headspace:</strong> Understands African context, Ubuntu philosophy, and local stressors
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-pink-300">
+                    <i class="fas fa-heart text-6xl mb-4 text-pink-200"></i>
+                    <h3 class="text-2xl font-bold mb-4">Crisis Prevention System</h3>
+                    <p class="text-lg mb-4">Real-time suicide risk detection with instant intervention protocols</p>
+                    <div class="bg-pink-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>Life-saving:</strong> Could prevent some of the 23 daily suicides in South Africa
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-green-300">
+                    <i class="fas fa-mobile-alt text-6xl mb-4 text-green-200"></i>
+                    <h3 class="text-2xl font-bold mb-4">Universal Mental Health Access</h3>
+                    <p class="text-lg mb-4">SMS therapy and USSD counseling for feature phones</p>
+                    <div class="bg-green-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>World's first:</strong> Mental health AI accessible via SMS for 36M feature phone users
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revolutionary Features -->
+            <div class="bg-black bg-opacity-30 p-8 rounded-lg border border-purple-400">
+                <h3 class="text-4xl font-bold mb-6 text-purple-200">Why MindScope Changes Everything</h3>
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="space-y-4">
+                        <div class="bg-purple-900 bg-opacity-40 p-4 rounded border border-purple-400">
+                            <h4 class="text-xl font-bold mb-2 text-purple-200">🧠 Cultural Intelligence</h4>
+                            <p>First AI trained on African mental health data, understanding Ubuntu, family dynamics, and cultural stigma</p>
+                            <p class="text-sm text-purple-300 mt-1">Speaks isiZulu, Sesotho, Afrikaans, English</p>
                         </div>
-                        <div class="app-content">
-                            <h4>Report New Incident</h4>
-                            <div style="margin-bottom: 15px;">
-                                <label>Incident Type:</label>
-                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
-                                    <option>Gas Leak</option>
-                                    <option>Rockfall</option>
-                                    <option>Machinery Incident</option>
-                                    <option>Fire</option>
-                                </select>
+                        <div class="bg-cyan-900 bg-opacity-40 p-4 rounded border border-cyan-400">
+                            <h4 class="text-xl font-bold mb-2 text-cyan-200">🔒 Mental Health Privacy</h4>
+                            <p>Your deepest thoughts processed locally - never sent to foreign servers</p>
+                            <p class="text-sm text-cyan-300 mt-1">Unlike BetterHelp, Talkspace who store data overseas</p>
+                        </div>
+                        <div class="bg-pink-900 bg-opacity-40 p-4 rounded border border-pink-400">
+                            <h4 class="text-xl font-bold mb-2 text-pink-200">📱 True Digital Inclusion</h4>
+                            <p>SMS-based therapy sessions for 36M feature phone users</p>
+                            <p class="text-sm text-pink-300 mt-1">No app download, no smartphone needed</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-green-900 bg-opacity-40 p-4 rounded border border-green-400">
+                            <h4 class="text-xl font-bold mb-2 text-green-200">⚡ Instant Crisis Response</h4>
+                            <p>AI detects suicidal ideation and connects to SA crisis hotlines within seconds</p>
+                            <p class="text-sm text-green-300 mt-1">Integrated with SADAG, Lifeline, local emergency services</p>
+                        </div>
+                        <div class="bg-yellow-900 bg-opacity-40 p-4 rounded border border-yellow-400">
+                            <h4 class="text-xl font-bold mb-2 text-yellow-200">🎓 Student-Focused</h4>
+                            <p>Special modules for university students facing exam stress and academic pressure</p>
+                            <p class="text-sm text-yellow-300 mt-1">Addressing the 41% with suicidal thoughts</p>
+                        </div>
+                        <div class="bg-red-900 bg-opacity-40 p-4 rounded border border-red-400">
+                            <h4 class="text-xl font-bold mb-2 text-red-200">🌍 Community Healing</h4>
+                            <p>Group therapy sessions and peer support networks</p>
+                            <p class="text-sm text-red-300 mt-1">Breaking isolation, building Ubuntu connections</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Revolutionary Breakthrough -->
+                <div class="mt-8 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 p-6 rounded-lg">
+                    <h4 class="text-3xl font-bold mb-3">🚀 The Mental Health Revolution</h4>
+                    <p class="text-xl">We're the ONLY mental health AI that combines African cultural intelligence, privacy-first architecture, feature phone accessibility, and real-time crisis intervention. This isn't just an app - it's a movement to save lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Technology Architecture -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Technology Architecture</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">Privacy-First Stack</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-mobile-alt text-blue-400"></i>
+                                <span>React Native Frontend</span>
                             </div>
-                            <div style="margin-bottom: 15px;">
-                                <label>Location:</label>
-                                <select style="width: 100%; padding: 8px; margin-top: 5px;">
-                                    <option>Shaft A - Level 3</option>
-                                    <option>Shaft B - Level 2</option>
-                                    <option>Processing Plant</option>
-                                    <option>Surface Operations</option>
-                                </select>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-server text-green-400"></i>
+                                <span>Node.js Backend API</span>
                             </div>
-                            <div style="margin-bottom: 15px;">
-                                <label>Urgency:</label>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <button style="flex: 1; background-color: #28a745; color: white; border: none; padding: 8px; margin-right: 5px;">Low</button>
-                                    <button style="flex: 1; background-color: #ffc107; color: white; border: none; padding: 8px; margin-right: 5px;">Medium</button>
-                                    <button style="flex: 1; background-color: #dc3545; color: white; border: none; padding: 8px;">High</button>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-brain text-purple-400"></i>
+                                <span>Local Medical AI (BioBERT)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-database text-yellow-400"></i>
+                                <span>Encrypted MongoDB</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-red-400"></i>
+                                <span>USSD Gateway Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-gray-800 p-6 rounded-lg text-center">
+                        <h3 class="text-xl font-bold mb-4">Data Flow</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="bg-blue-600 p-3 rounded">User Input (Chat/USSD)</div>
+                            <div class="text-gray-400">↓</div>
+                            <div class="bg-green-600 p-3 rounded">Local AI Processing</div>
+                            <div class="text-gray-400">↓</div>
+                            <div class="bg-purple-600 p-3 rounded">Emergency Detection</div>
+                            <div class="text-gray-400">↓</div>
+                            <div class="bg-yellow-600 p-3 rounded">Encrypted Storage</div>
+                            <div class="text-gray-400">↓</div>
+                            <div class="bg-red-600 p-3 rounded">Response (Chat/Voice)</div>
+                        </div>
+                        <div class="mt-4 text-green-400 font-bold">
+                            🔒 No External APIs • 100% Local
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Live Demo - Smartphone -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Live Demo: Smartphone App</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="demo-phone mx-auto">
+                        <div class="demo-screen">
+                            <div id="demoChat" class="h-full flex flex-col">
+                                <!-- Demo will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-blue-400">Key Features Demo</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-green-400">✅ Medical AI Chat</h4>
+                            <p>Intelligent health consultation with topic classification</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-red-400">🚨 Emergency Detection</h4>
+                            <p>Automatic crisis intervention with local resources</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-purple-400">🏷️ Topic Classification</h4>
+                            <p>Pain management, mental health, illness categorization</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-blue-400">💡 Smart Recommendations</h4>
+                            <p>Personalized health advice with medical disclaimers</p>
+                        </div>
+                    </div>
+                    <button onclick="startSmartphoneDemo()" class="mt-6 bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold pulse-animation">
+                        Start Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: USSD Demo -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Revolutionary: USSD Medical AI</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gray-800 p-8 rounded-lg">
+                        <h3 class="text-3xl font-bold mb-6 text-green-400">Feature Phone Access</h3>
+                        <div class="space-y-6">
+                            <div class="bg-green-900 bg-opacity-30 p-4 rounded border border-green-500">
+                                <h4 class="text-xl font-bold mb-2">Step 1: Dial USSD</h4>
+                                <p class="text-lg font-mono">*134*4357# (HELP)</p>
+                            </div>
+                            <div class="bg-blue-900 bg-opacity-30 p-4 rounded border border-blue-500">
+                                <h4 class="text-xl font-bold mb-2">Step 2: Get Callback</h4>
+                                <p>AI calls you back within 30 seconds</p>
+                            </div>
+                            <div class="bg-purple-900 bg-opacity-30 p-4 rounded border border-purple-500">
+                                <h4 class="text-xl font-bold mb-2">Step 3: Voice Consultation</h4>
+                                <p>Speak naturally with medical AI in your language</p>
+                            </div>
+                        </div>
+                        <button onclick="startUSSDDemo()" class="mt-6 bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold pulse-animation">
+                            Demo USSD Flow
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <!-- Ultra-Realistic LARGE Nokia 3310 Design -->
+                    <div class="mx-auto" style="width: 400px;">
+                        <!-- Nokia 3310 Phone Body - MUCH BIGGER -->
+                        <div class="relative bg-gradient-to-b from-blue-800 via-blue-900 to-gray-900 rounded-t-3xl rounded-b-2xl shadow-2xl border-4 border-gray-700" style="width: 400px; height: 700px; padding: 25px;">
+
+                            <!-- Nokia Logo and Speaker -->
+                            <div class="text-center mb-8">
+                                <div class="text-white text-2xl font-bold tracking-widest mb-3">NOKIA</div>
+                                <div class="bg-gray-800 h-4 w-32 mx-auto rounded-full mb-4"></div>
+                            </div>
+
+                            <!-- Iconic Nokia 3310 Screen - MUCH BIGGER AND MORE VISIBLE -->
+                            <div class="bg-gradient-to-b from-green-200 to-green-400 p-4 rounded border-4 border-gray-600 mb-8 shadow-inner" style="height: 200px;">
+                                <div class="bg-green-300 text-black p-4 rounded text-lg font-mono leading-relaxed h-full overflow-hidden" id="ussdScreen">
+                                    <div class="text-center font-bold">
+                                        Ready to dial...
+                                        <br><br>
+                                        Press Demo button to start
+                                    </div>
                                 </div>
                             </div>
-                            <div style="margin-bottom: 15px;">
-                                <label>Description:</label>
-                                <textarea style="width: 100%; height: 60px; padding: 8px; margin-top: 5px;" placeholder="Describe what you're seeing..."></textarea>
+
+                            <!-- Navigation D-pad -->
+                            <div class="flex justify-center mb-6">
+                                <div class="relative">
+                                    <!-- Up -->
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gray-600 rounded-sm border border-gray-500"></div>
+                                    <!-- Left -->
+                                    <div class="absolute top-1/2 -left-4 transform -translate-y-1/2 w-8 h-8 bg-gray-600 rounded-sm border border-gray-500"></div>
+                                    <!-- Center (Select) -->
+                                    <div class="w-12 h-12 bg-gray-500 rounded-full border-2 border-gray-400 flex items-center justify-center">
+                                        <div class="w-6 h-6 bg-gray-700 rounded-full"></div>
+                                    </div>
+                                    <!-- Right -->
+                                    <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 w-8 h-8 bg-gray-600 rounded-sm border border-gray-500"></div>
+                                    <!-- Down -->
+                                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gray-600 rounded-sm border border-gray-500"></div>
+                                </div>
                             </div>
-                            <div style="display: flex; margin-bottom: 15px;">
-                                <button style="flex: 1; background-color: #1a3a5f; color: white; border: none; padding: 10px; border-radius: 5px; margin-right: 5px;">
-                                    <span style="font-size: 1.2em;">📷</span> Photo
-                                </button>
-                                <button style="flex: 1; background-color: #1a3a5f; color: white; border: none; padding: 10px; border-radius: 5px;">
-                                    <span style="font-size: 1.2em;">🎤</span> Voice
-                                </button>
+
+                            <!-- Menu/Back Buttons -->
+                            <div class="flex justify-center gap-12 mb-6">
+                                <div class="w-12 h-6 bg-gray-600 rounded border border-gray-500 flex items-center justify-center text-white text-sm font-bold">Menu</div>
+                                <div class="w-12 h-6 bg-gray-600 rounded border border-gray-500 flex items-center justify-center text-white text-sm font-bold">Back</div>
                             </div>
-                            <div>
-                                <button style="background-color: #dc3545; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold;">REPORT EMERGENCY</button>
+
+                            <!-- Classic Nokia 3310 Keypad - BIGGER -->
+                            <div class="grid grid-cols-3 gap-2 mb-6">
+                                <!-- Row 1 -->
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>1</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>2</div>
+                                    <div class="text-xs">abc</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>3</div>
+                                    <div class="text-xs">def</div>
+                                </div>
+                                <!-- Row 2 -->
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>4</div>
+                                    <div class="text-xs">ghi</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>5</div>
+                                    <div class="text-xs">jkl</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>6</div>
+                                    <div class="text-xs">mno</div>
+                                </div>
+                                <!-- Row 3 -->
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>7</div>
+                                    <div class="text-xs">pqrs</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>8</div>
+                                    <div class="text-xs">tuv</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>9</div>
+                                    <div class="text-xs">wxyz</div>
+                                </div>
+                                <!-- Row 4 -->
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex items-center justify-center text-white text-lg font-bold shadow-md">*</div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex flex-col items-center justify-center text-white text-lg font-bold shadow-md">
+                                    <div>0</div>
+                                    <div class="text-xs">space</div>
+                                </div>
+                                <div class="w-16 h-12 bg-gray-600 rounded border border-gray-500 flex items-center justify-center text-white text-lg font-bold shadow-md">#</div>
                             </div>
-                            <div style="margin-top: 15px; text-align: center; font-size: 0.9em; color: #28a745;">
-                                <p><strong>Works offline underground</strong></p>
+
+                            <!-- Call/End Buttons -->
+                            <div class="flex justify-center gap-6 mb-4">
+                                <div class="w-16 h-12 bg-green-600 rounded-lg border-2 border-green-500 flex items-center justify-center shadow-lg">
+                                    <div class="text-white text-2xl">📞</div>
+                                </div>
+                                <div class="w-16 h-12 bg-red-600 rounded-lg border-2 border-red-500 flex items-center justify-center shadow-lg">
+                                    <div class="text-white text-2xl">📵</div>
+                                </div>
                             </div>
+
+                            <!-- Antenna -->
+                            <div class="absolute -top-3 right-6">
+                                <div class="w-2 h-16 bg-gray-600 rounded-full shadow-md"></div>
+                                <div class="w-3 h-3 bg-gray-500 rounded-full mt-1 -ml-0.5"></div>
+                            </div>
+
+                            <!-- Nokia 3310 Bottom Label -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+                                <div class="text-gray-400 text-lg font-bold">3310</div>
+                            </div>
+                        </div>
+
+                        <!-- Nostalgic Caption -->
+                        <div class="text-center mt-6">
+                            <p class="text-lg text-gray-400 italic font-bold">"The Indestructible Legend"</p>
+                            <p class="text-sm text-gray-500">Now with AI Mental Health Support</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Slide 4: Innovation & Differentiation -->
-        <div class="slide">
-            <h2>💡 Innovation & Differentiation</h2>
-            <div class="content-container">
-                <div class="text-content">
-                    <h3>What Makes Us Different</h3>
-                    <div class="innovation-item">
-                        <h3>Domain-specific</h3>
-                        <p>Tailored specifically for mining operations with industry-standard safety protocols</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h3>Smart Inputs</h3>
-                        <p>Uses natural language + dropdowns to auto-structure reports for faster processing</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h3>Location-Aware</h3>
-                        <p>Connects incident type to geographic mine sections for targeted response</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h3>Real-Time Reporting</h3>
-                        <p>Speeds up emergency responses with instant notifications to relevant personnel</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h3>Adaptable & Learning</h3>
-                        <p>Learns from repeated incidents to suggest mitigations and preventive measures</p>
-                    </div>
-                </div>
-                <div class="visual-content">
-                    <img src="https://www.cengn.ca/wp-content/uploads/2022/03/Smart-Mining-Infographic-1-1024x576.png" alt="Innovation Diagram" style="max-width: 100%; border-radius: 10px;">
+    <!-- Slide 7: Competitive Analysis -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Competitive Advantage</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full bg-gray-800 rounded-lg overflow-hidden">
+                    <thead class="bg-blue-600">
+                        <tr>
+                            <th class="p-4 text-left">Feature</th>
+                            <th class="p-4 text-center">Mobile Spo</th>
+                            <th class="p-4 text-center">Babylon Health</th>
+                            <th class="p-4 text-center">Ada Health</th>
+                            <th class="p-4 text-center">WebMD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-4 font-bold">Privacy-First (Local Processing)</td>
+                            <td class="p-4 text-center text-green-400">✅ 100% Local</td>
+                            <td class="p-4 text-center text-red-400">❌ Cloud-based</td>
+                            <td class="p-4 text-center text-red-400">❌ Cloud-based</td>
+                            <td class="p-4 text-center text-red-400">❌ Cloud-based</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-4 font-bold">Feature Phone Support (USSD)</td>
+                            <td class="p-4 text-center text-green-400">✅ Voice AI</td>
+                            <td class="p-4 text-center text-red-400">❌ App only</td>
+                            <td class="p-4 text-center text-red-400">❌ App only</td>
+                            <td class="p-4 text-center text-red-400">❌ Web only</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-4 font-bold">Emergency Detection</td>
+                            <td class="p-4 text-center text-green-400">✅ Real-time</td>
+                            <td class="p-4 text-center text-yellow-400">⚠️ Limited</td>
+                            <td class="p-4 text-center text-yellow-400">⚠️ Basic</td>
+                            <td class="p-4 text-center text-red-400">❌ None</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-4 font-bold">Local Emergency Integration</td>
+                            <td class="p-4 text-center text-green-400">✅ SA Numbers</td>
+                            <td class="p-4 text-center text-red-400">❌ UK-focused</td>
+                            <td class="p-4 text-center text-red-400">❌ EU-focused</td>
+                            <td class="p-4 text-center text-red-400">❌ US-focused</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-4 font-bold">Multi-language (African)</td>
+                            <td class="p-4 text-center text-green-400">✅ 4 Languages</td>
+                            <td class="p-4 text-center text-yellow-400">⚠️ English only</td>
+                            <td class="p-4 text-center text-yellow-400">⚠️ Limited</td>
+                            <td class="p-4 text-center text-yellow-400">⚠️ English only</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">Pricing</td>
+                            <td class="p-4 text-center text-green-400">Free + Premium</td>
+                            <td class="p-4 text-center text-red-400">$12/month</td>
+                            <td class="p-4 text-center text-red-400">$9/month</td>
+                            <td class="p-4 text-center text-yellow-400">Free + Ads</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-8 text-center">
+                <div class="bg-green-900 bg-opacity-30 p-6 rounded-lg border border-green-500">
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Our Unique Value Proposition</h3>
+                    <p class="text-lg">The ONLY medical AI that combines privacy-first architecture, feature phone accessibility, and Africa-specific emergency integration</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Slide 5: Team Collaboration -->
-        <div class="slide">
-            <h2>👥 Team Collaboration</h2>
-            <div class="content-container">
-                <div class="text-content">
-                    <h3>Roles:</h3>
-                    <div class="team-grid">
-                        <div class="team-item">
-                            <h3>AI Engineer</h3>
-                            <p>Built agent logic and integration points</p>
-                        </div>
-                        <div class="team-item">
-                            <h3>Safety Expert</h3>
-                            <p>Provided mining protocol data and compliance requirements</p>
-                        </div>
-                        <div class="team-item">
-                            <h3>Designer</h3>
-                            <p>UX optimized for safety workers in challenging environments</p>
-                        </div>
-                        <div class="team-item">
-                            <h3>PM/Strategist</h3>
-                            <p>Coordinated project and pitch development</p>
-                        </div>
+    <!-- Slide 8: Mental Health Market Opportunity & Scalability -->
+    <section class="slide mental-health-gradient">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-8 text-center text-white">Mental Health Market: Massive Opportunity + Exponential Impact</h2>
+
+            <!-- Mental Health Market Size with Context -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-purple-400 text-center backdrop-blur-sm">
+                    <h4 class="text-2xl font-bold mb-4 text-purple-200">South Africa (Year 1)</h4>
+                    <div class="text-5xl font-bold text-purple-300 mb-2">10M</div>
+                    <p class="text-lg mb-3">People with depression & anxiety disorders</p>
+                    <div class="bg-purple-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>Crisis Reality:</strong> 75% get no treatment<br/>
+                        <strong>Our Opportunity:</strong> R2M revenue potential
                     </div>
-                    <h3>Collaboration Highlights:</h3>
-                    <ul>
-                        <li>Combined mining domain expertise with AI innovation</li>
-                        <li>Worked cross-functionally: business, design, and tech</li>
-                        <li>Used structured problem-solving sessions under time pressure</li>
-                    </ul>
                 </div>
-                <div class="visual-content">
-                    <img src="https://www.shutterstock.com/image-photo/mining-engineers-discussing-project-while-600nw-2276129795.jpg" alt="Team Collaboration" style="max-width: 100%; border-radius: 10px;">
+
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-cyan-400 text-center backdrop-blur-sm">
+                    <h4 class="text-2xl font-bold mb-4 text-cyan-200">SADC Region (Year 2-3)</h4>
+                    <div class="text-5xl font-bold text-cyan-300 mb-2">50M</div>
+                    <p class="text-lg mb-3">People needing mental health support</p>
+                    <div class="bg-cyan-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>Expansion:</strong> Botswana, Namibia, Zimbabwe<br/>
+                        <strong>Revenue Target:</strong> R15M annually
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-pink-400 text-center backdrop-blur-sm">
+                    <h4 class="text-2xl font-bold mb-4 text-pink-200">Sub-Saharan Africa (Year 4-5)</h4>
+                    <div class="text-5xl font-bold text-pink-300 mb-2">200M</div>
+                    <p class="text-lg mb-3">People affected by mental health conditions</p>
+                    <div class="bg-pink-900 bg-opacity-50 p-3 rounded text-sm">
+                        <strong>Scale:</strong> Nigeria, Kenya, Ghana<br/>
+                        <strong>Revenue Potential:</strong> R100M annually
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 6: Market & Business Viability -->
-        <div class="slide">
-            <h2>📈 Market & Business Viability</h2>
-            <div class="content-container">
-                <div class="text-content">
-                    <h3>Who Will Use This?</h3>
-                    <div class="market-item">
-                        <h3>Mining Companies</h3>
-                        <p>Improve safety records and reduce incident-related downtime</p>
+            <!-- Scalability Advantages -->
+            <div class="bg-gray-800 p-8 rounded-lg mb-8">
+                <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">Why We Scale Exponentially</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="bg-yellow-900 bg-opacity-30 p-4 rounded border border-yellow-500">
+                            <h4 class="text-xl font-bold text-yellow-300 mb-2">🚀 Network Effects</h4>
+                            <p>Each new user improves AI for everyone. More data = better health outcomes = viral growth</p>
+                        </div>
+                        <div class="bg-blue-900 bg-opacity-30 p-4 rounded border border-blue-500">
+                            <h4 class="text-xl font-bold text-blue-300 mb-2">📱 Zero Marginal Cost</h4>
+                            <p>Software scales infinitely. Serving 1M users costs the same as serving 1K users</p>
+                        </div>
                     </div>
-                    <div class="market-item">
-                        <h3>Safety Officers</h3>
-                        <p>Streamline reporting and gain insights from incident patterns</p>
-                    </div>
-                    <div class="market-item">
-                        <h3>Government Inspection Agencies</h3>
-                        <p>Access standardized safety data for compliance monitoring</p>
-                    </div>
-
-                    <h3>Adoption Potential:</h3>
-                    <ul>
-                        <li>Easy integration into existing mine safety platforms</li>
-                        <li>High demand due to increasing safety regulation compliance</li>
-                        <li>Can expand to oil rigs, construction, and industrial plants</li>
-                    </ul>
-                </div>
-                <div class="visual-content">
-                    <img src="https://picterra.ch/wp-content/uploads/2023/03/mining-monitoring-dashboard-1.png" alt="Market Potential" style="max-width: 100%; border-radius: 10px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Team Collaboration: Leveraging Collective Strengths -->
-        <div class="slide">
-            <h2>👥 Team Collaboration: Leveraging Collective Strengths</h2>
-            <div class="content-container">
-                <div class="text-content">
-                    <h3>How We Worked Together Throughout the Hackathon</h3>
-                    <div class="team-item">
-                        <h3>Agile Approach</h3>
-                        <p>We adopted a rapid prototyping methodology with daily stand-ups and frequent check-ins to ensure alignment.</p>
-                    </div>
-                    <div class="team-item">
-                        <h3>Unique Skills & Strengths</h3>
-                        <ul>
-                            <li><strong>Technical Expertise:</strong> AI/ML knowledge for pattern recognition in safety incidents</li>
-                            <li><strong>Domain Knowledge:</strong> Deep understanding of mining operations and safety protocols</li>
-                            <li><strong>Design Thinking:</strong> User-centered approach for intuitive interfaces in challenging environments</li>
-                            <li><strong>Business Acumen:</strong> Market analysis and value proposition development</li>
-                        </ul>
-                    </div>
-                    <div class="team-item">
-                        <h3>Cross-Disciplinary Collaboration</h3>
-                        <p>Our team bridged business, design, and engineering perspectives to create a holistic solution that addresses real-world needs.</p>
-                    </div>
-                    <div class="team-item">
-                        <h3>Structured Problem-Solving</h3>
-                        <p>We used a framework of Define → Ideate → Prototype → Test → Refine to tackle challenges methodically under time pressure.</p>
-                    </div>
-                </div>
-                <div class="visual-content">
-                    <img src="https://www.shutterstock.com/image-photo/diverse-group-mining-engineers-having-600nw-2276129801.jpg" alt="Team Collaboration" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
-                    <div style="background-color: #f0f0f0; padding: 15px; border-radius: 10px;">
-                        <h3 style="margin-top: 0; color: #1a3a5f;">Our Collaboration Framework</h3>
-                        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-                            <div style="text-align: center; flex: 1;">
-                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">1</div>
-                                <p>Define</p>
-                            </div>
-                            <div style="text-align: center; flex: 1;">
-                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">2</div>
-                                <p>Ideate</p>
-                            </div>
-                            <div style="text-align: center; flex: 1;">
-                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">3</div>
-                                <p>Prototype</p>
-                            </div>
-                            <div style="text-align: center; flex: 1;">
-                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">4</div>
-                                <p>Test</p>
-                            </div>
-                            <div style="text-align: center; flex: 1;">
-                                <div style="background-color: #1a3a5f; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">5</div>
-                                <p>Refine</p>
-                            </div>
+                    <div class="space-y-4">
+                        <div class="bg-green-900 bg-opacity-30 p-4 rounded border border-green-500">
+                            <h4 class="text-xl font-bold text-green-300 mb-2">🌍 Geographic Replication</h4>
+                            <p>Same problems across Africa. Solution proven in SA = instant credibility elsewhere</p>
+                        </div>
+                        <div class="bg-red-900 bg-opacity-30 p-4 rounded border border-red-500">
+                            <h4 class="text-xl font-bold text-red-300 mb-2">🏥 B2B Multiplier</h4>
+                            <p>One government contract = millions of users. WHO partnership = continental reach</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 8: Why It Matters - Closing -->
-        <div class="slide">
-            <h2>🎯 Why Mine Safety Monitor Wins</h2>
-            <div class="closing-points">
-                <p>The <strong>Mine Safety Monitor</strong> isn't just a tool—it's a <span style="color: #dc3545; font-weight: bold;">lifesaving companion</span> in one of the world's most dangerous industries.</p>
-
-                <div style="background-color: rgba(26, 58, 95, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: #1a3a5f; margin-top: 0;">Why This Solution Matters:</h3>
-                    <ul style="font-size: 1.1em; line-height: 1.6;">
-                        <li><strong>Lives Saved:</strong> Faster reporting = Faster response = Fewer fatalities</li>
-                        <li><strong>Cost Reduction:</strong> Preventing incidents saves millions in downtime and damages</li>
-                        <li><strong>Compliance Simplified:</strong> Automated documentation for regulatory requirements</li>
-                        <li><strong>Data-Driven Safety:</strong> Turning incident patterns into preventive measures</li>
-                    </ul>
+            <!-- Mental Health Impact Metrics -->
+            <div class="bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 p-8 rounded-lg">
+                <h3 class="text-3xl font-bold mb-6 text-center text-white">Projected Mental Health Impact by Year 5</h3>
+                <div class="grid md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">5M</div>
+                        <p class="text-lg">Minds Healed</p>
+                        <p class="text-sm text-gray-200">Active users receiving support</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">25 000</div>
+                        <p class="text-lg">Suicides Prevented</p>
+                        <p class="text-sm text-gray-200">Through crisis intervention</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">R100M</div>
+                        <p class="text-lg">Annual Revenue</p>
+                        <p class="text-sm text-gray-200">Mental health market</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-white mb-2">R750M</div>
+                        <p class="text-lg">Company Valuation</p>
+                        <p class="text-sm text-gray-200">Mental health unicorn</p>
+                    </div>
                 </div>
 
-                <div class="closing-highlight" style="background-color: rgba(240, 173, 78, 0.2); padding: 20px; border-radius: 10px; text-align: center;">
-                    <p style="font-size: 1.4em; margin: 0;"><span style="color: #dc3545; font-weight: bold;">"Every minute saved in reporting</span> could be a life saved underground."</p>
-                </div>
-
-                <div style="margin-top: 20px; text-align: center; font-size: 1.2em;">
-                    <p>That's not just innovation—that's <span style="color: #28a745; font-weight: bold;">transformation</span>.</p>
-                    <p>That's why Mine Safety Monitor is a <span style="color: #f0ad4e; font-weight: bold; font-size: 1.2em;">WINNING SOLUTION</span>.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <img src="https://www.shutterstock.com/image-photo/mining-safety-first-sign-600nw-1918290755.jpg" alt="Safety First" style="max-width: 100%; border-radius: 10px;">
-            </div>
-        </div>
-
-        <!-- Slide 9: Demo or Visual Walkthrough -->
-        <div class="slide">
-            <h2>📸 Demo & Visual Walkthrough</h2>
-            <div class="demo-grid">
-                <div class="demo-item">
-                    <h3>Incident Input Interface</h3>
-                    <img src="https://www.researchgate.net/publication/358285551/figure/fig2/AS:1119992851206144@1643809020183/Interface-Android-Application-Software-Serial.png" alt="Incident Input Interface" style="max-width: 100%; border-radius: 5px;">
-                    <p>Simple, intuitive interface designed for quick reporting even in challenging environments</p>
-                </div>
-                <div class="demo-item">
-                    <h3>Types of Incidents</h3>
-                    <img src="https://www.cdc.gov/niosh/mining/images/content/researchprogram/hazardid.jpg" alt="Incident Types" style="max-width: 100%; border-radius: 5px;">
-                    <p>Comprehensive coverage of mining hazards: Gas Leaks, Rockfalls, Fires, Equipment Failures</p>
-                </div>
-                <div class="demo-item">
-                    <h3>Location Tagging</h3>
-                    <img src="https://www.researchgate.net/publication/358285551/figure/fig3/AS:1119992851210240@1643809020243/Interface-Android-Application-Software-Serial_Q640.jpg" alt="Location Tagging" style="max-width: 100%; border-radius: 5px;">
-                    <p>Precise location mapping to mine sections for targeted emergency response</p>
-                </div>
-                <div class="demo-item">
-                    <h3>Alert Generation</h3>
-                    <img src="https://www.campbellsci.eu/images/mining-dashboard.jpg" alt="Alert Generation" style="max-width: 100%; border-radius: 5px;">
-                    <p>Automated alerts with severity levels sent to appropriate personnel based on incident type</p>
+                <!-- Additional Impact Metrics -->
+                <div class="mt-8 grid md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white bg-opacity-20 p-4 rounded">
+                        <div class="text-2xl font-bold text-white mb-1">1M</div>
+                        <p class="text-sm">Students supported through exam stress</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-4 rounded">
+                        <div class="text-2xl font-bold text-white mb-1">500K</div>
+                        <p class="text-sm">Feature phone users reached</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-4 rounded">
+                        <div class="text-2xl font-bold text-white mb-1">15</div>
+                        <p class="text-sm">African countries transformed</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="navigation">
-        <button class="nav-button" id="prev-btn">Previous</button>
-        <span id="slide-indicator">Slide 1 of 9</span>
-        <button class="nav-button" id="next-btn">Next</button>
-        <a href="Mine_Safety_Monitor_Presentation.html" download="Mine_Safety_Monitor_Presentation.html" class="nav-button" style="background-color: #28a745; text-decoration: none; margin-left: 20px;">
-            <span style="margin-right: 5px;">⬇️</span> Download HTML Presentation
-        </a>
-        <button id="print-btn" class="nav-button" style="background-color: #17a2b8; margin-left: 10px;">
-            <span style="margin-right: 5px;">🖨️</span> Print as PDF
-        </button>
-    </div>
-
+    </section>
+    
     <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Don't trigger slide navigation if user is typing in an input field
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+                return;
+            }
+
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Demo functions
+        function startSmartphoneDemo() {
+            const demoChat = document.getElementById('demoChat');
+            demoChat.innerHTML = `
+                <div class="bg-blue-600 text-white p-3 text-center">
+                    <h4 class="font-bold">Mobile Spo AI</h4>
+                </div>
+                <div class="flex-1 p-4 overflow-y-auto" id="chatMessages">
+                    <div class="mb-4">
+                        <div class="bg-gray-100 p-3 rounded-lg text-gray-800">
+                            <div class="flex items-center mb-2">
+                                <div class="w-6 h-6 bg-orange-400 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-white text-xs font-bold">AI</span>
+                                </div>
+                            </div>
+                            Hello! I'm your AI health assistant. How can I help you today?
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 border-t">
+                    <div class="flex space-x-2">
+                        <input type="text" id="demoInput" placeholder="Type your health question..." class="flex-1 p-2 border rounded text-gray-800">
+                        <button onclick="sendDemoMessage()" class="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendDemoMessage() {
+            const input = document.getElementById('demoInput');
+            const messages = document.getElementById('chatMessages');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            messages.innerHTML += `
+                <div class="mb-4 text-right">
+                    <div class="bg-purple-600 text-white p-3 rounded-lg inline-block">
+                        ${message}
+                    </div>
+                </div>
+            `;
+
+            input.value = '';
+
+            // Simulate AI response for mental health scenarios
+            setTimeout(() => {
+                let response = '';
+                let isEmergency = false;
+                let topics = [];
+
+                if (message.toLowerCase().includes('anxious') || message.toLowerCase().includes('anxiety') || message.toLowerCase().includes('worried')) {
+                    response = "I hear that you're feeling anxious, and I want you to know that what you're experiencing is valid. Anxiety affects millions of people. Can you tell me what's been triggering these feelings? Let's work through this together.";
+                    topics = ['Anxiety', 'Coping Strategies'];
+                } else if (message.toLowerCase().includes('depressed') || message.toLowerCase().includes('sad') || message.toLowerCase().includes('hopeless')) {
+                    response = "Thank you for trusting me with these feelings. Depression can feel overwhelming, but you've taken a brave step by reaching out. You're not alone in this. What's been weighing on your mind lately?";
+                    topics = ['Depression', 'Support'];
+                } else if (message.toLowerCase().includes('exam') || message.toLowerCase().includes('stress') || message.toLowerCase().includes('university')) {
+                    response = "Academic pressure can be incredibly overwhelming. Many students struggle with this - you're part of a community that understands. Let's talk about some strategies to manage this stress. What specific aspects are causing you the most worry?";
+                    topics = ['Academic Stress', 'Student Support'];
+                } else if (message.toLowerCase().includes('hurt myself') || message.toLowerCase().includes('suicide') || message.toLowerCase().includes('end it all') || message.toLowerCase().includes('kill myself')) {
+                    response = "I'm very concerned about you, and I'm so glad you reached out. These feelings are a sign that you're in pain, not that anything is wrong with you. You matter, and help is available right now. I'm connecting you with crisis support immediately.";
+                    isEmergency = true;
+                    topics = ['Crisis Intervention', 'Emergency Support'];
+                } else if (message.toLowerCase().includes('lonely') || message.toLowerCase().includes('isolated') || message.toLowerCase().includes('alone')) {
+                    response = "Feeling lonely can be one of the most painful experiences. In African culture, we believe in Ubuntu - 'I am because we are.' You're part of a larger community, even when it doesn't feel that way. Let's explore ways to reconnect.";
+                    topics = ['Loneliness', 'Community Support', 'Ubuntu'];
+                } else {
+                    response = "Thank you for reaching out to MindScope. I'm here to support your mental health journey. Whether you're dealing with stress, anxiety, depression, or just need someone to talk to, I'm here to listen. What's on your mind today?";
+                    topics = ['Mental Health Support'];
+                }
+
+                messages.innerHTML += `
+                    <div class="mb-4">
+                        <div class="bg-gray-100 p-3 rounded-lg text-gray-800">
+                            <div class="flex items-center mb-2">
+                                <div class="w-6 h-6 bg-orange-400 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-white text-xs font-bold">AI</span>
+                                </div>
+                                ${isEmergency ? '<span class="bg-red-500 text-white px-2 py-1 rounded text-xs ml-2">🚨 EMERGENCY</span>' : ''}
+                            </div>
+                            ${response}
+                            ${topics.length > 0 ? `
+                                <div class="mt-2 flex flex-wrap gap-1">
+                                    ${topics.map(topic => `<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">${topic}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                if (isEmergency) {
+                    setTimeout(() => {
+                        messages.innerHTML += `
+                            <div class="mb-4">
+                                <div class="bg-red-100 border border-red-300 p-3 rounded-lg text-red-800">
+                                    <h4 class="font-bold mb-2">🆘 Crisis Support Activated - You Are Not Alone</h4>
+                                    <div class="text-sm space-y-2">
+                                        <div class="font-semibold">Immediate Help Available:</div>
+                                        <div>🔴 SADAG Crisis Line: 0800 567 567 (24/7)</div>
+                                        <div>🔴 Suicide Crisis Line: 0800 12 13 14 (24/7)</div>
+                                        <div>🔴 Lifeline: 0861 322 322 (24/7)</div>
+                                        <div>📱 SMS "Hi" to 31393 for counseling</div>
+                                        <div class="mt-2 p-2 bg-red-200 rounded">
+                                            <strong>Remember:</strong> This crisis will pass. You matter. Help is here.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        messages.scrollTop = messages.scrollHeight;
+                    }, 1000);
+                }
+
+                messages.scrollTop = messages.scrollHeight;
+            }, 1500);
+        }
+
+        function startUSSDDemo() {
+            const ussdScreen = document.getElementById('ussdScreen');
+
+            // Step 1: Dialing
+            ussdScreen.innerHTML = `
+                <div class="text-center">
+                    Dialing *134*4357#...
+                    <br><br>
+                    <div class="typing-animation">Connecting...</div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                // Step 2: USSD Menu
+                ussdScreen.innerHTML = `
+                    <div>
+                        MindScope Mental Health AI
+                        <br>
+                        1. Talk to AI Counselor
+                        <br>
+                        2. Crisis Support
+                        <br>
+                        3. Daily Check-in
+                        <br>
+                        4. Find Local Help
+                        <br>
+                        5. Student Support
+                        <br><br>
+                        Reply with option number
+                        <br>
+                        <div class="typing-animation">Waiting for input...</div>
+                    </div>
+                `;
+            }, 3000);
+
+            setTimeout(() => {
+                // Step 3: User selects option 1
+                ussdScreen.innerHTML = `
+                    <div>
+                        You selected: AI Counselor
+                        <br><br>
+                        Our mental health AI will
+                        call you back in 30 seconds
+                        for a private conversation.
+                        <br><br>
+                        The call is FREE and
+                        completely confidential.
+                        Your privacy is protected.
+                        <br><br>
+                        <div class="typing-animation">Preparing secure callback...</div>
+                    </div>
+                `;
+            }, 7000);
+
+            setTimeout(() => {
+                // Step 4: Incoming call simulation
+                ussdScreen.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-2xl mb-4">📞</div>
+                        INCOMING CALL
+                        <br>
+                        MindScope AI Counselor
+                        <br>
+                        +27 11 MIND-123
+                        <br><br>
+                        <div class="bg-green-600 p-2 rounded">
+                            ANSWER
+                        </div>
+                        <br>
+                        <div class="bg-red-600 p-2 rounded">
+                            DECLINE
+                        </div>
+                    </div>
+                `;
+            }, 11000);
+
+            setTimeout(() => {
+                // Step 5: Voice conversation
+                ussdScreen.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-2xl mb-4">🎤</div>
+                        CALL CONNECTED
+                        <br><br>
+                        AI: "Hello, I'm your MindScope
+                        counselor. This is a safe space.
+                        How are you feeling today?"
+                        <br><br>
+                        You: "I'm feeling anxious about
+                        my exams..."
+                        <br><br>
+                        AI: "I understand exam stress
+                        can be overwhelming. You're not
+                        alone. Let's talk through this..."
+                        <br><br>
+                        <div class="typing-animation">Listening with empathy...</div>
+                    </div>
+                `;
+            }, 15000);
+        }
+
+        // Video intro functions
+        function skipVideo() {
+            startPresentation();
+        }
+
+        function startPresentation() {
+            document.getElementById('videoIntro').style.display = 'none';
+            document.getElementById('presentationContainer').style.display = 'block';
+            // Initialize slide counter
+            document.getElementById('slideCounter').textContent = `1 / ${totalSlides}`;
+        }
+
+        // Auto-advance when video ends
         document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const printBtn = document.getElementById('print-btn');
-            const slideIndicator = document.getElementById('slide-indicator');
-            let currentSlide = 0;
-
-            function updateSlideIndicator() {
-                slideIndicator.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
-            }
-
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                slides[index].classList.add('active');
-                updateSlideIndicator();
-            }
-
-            prevBtn.addEventListener('click', function() {
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    showSlide(currentSlide);
-                }
-            });
-
-            nextBtn.addEventListener('click', function() {
-                if (currentSlide < slides.length - 1) {
-                    currentSlide++;
-                    showSlide(currentSlide);
-                }
-            });
-
-            // Print functionality
-            printBtn.addEventListener('click', function() {
-                // Create a print-friendly version
-                const printContent = document.createElement('div');
-                printContent.style.width = '100%';
-                printContent.style.height = '100%';
-                printContent.style.position = 'fixed';
-                printContent.style.top = '0';
-                printContent.style.left = '0';
-                printContent.style.zIndex = '9999';
-                printContent.style.backgroundColor = 'white';
-
-                // Clone all slides and make them visible
-                slides.forEach(slide => {
-                    const clonedSlide = slide.cloneNode(true);
-                    clonedSlide.style.display = 'block';
-                    clonedSlide.style.pageBreakAfter = 'always';
-                    clonedSlide.style.height = 'auto';
-                    clonedSlide.style.minHeight = '100vh';
-                    clonedSlide.style.padding = '40px';
-                    clonedSlide.style.boxSizing = 'border-box';
-                    printContent.appendChild(clonedSlide);
+            const video = document.getElementById('introVideo');
+            if (video) {
+                video.addEventListener('ended', function() {
+                    setTimeout(startPresentation, 1000); // 1 second delay after video ends
                 });
 
-                // Add to body
-                document.body.appendChild(printContent);
-
-                // Print
-                window.print();
-
-                // Remove after printing
-                document.body.removeChild(printContent);
-            });
-
-            // Initialize
-            updateSlideIndicator();
+                // If video fails to load, show fallback and enable start button
+                video.addEventListener('error', function() {
+                    console.log('Video failed to load, showing fallback content');
+                });
+            }
         });
+
+        // Initialize slide counter (will be called when presentation starts)
+        // document.getElementById('slideCounter').textContent = `1 / ${totalSlides}`;
     </script>
+
+    <!-- Slide 9: Mental Health Revenue Model -->
+    <section class="slide mental-health-gradient">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center text-white">Mental Health Revenue Model</h2>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-green-400 backdrop-blur-sm">
+                    <h3 class="text-2xl font-bold mb-4 text-green-300">Freemium Mental Health</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-green-200">Free Tier</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 5 AI therapy sessions/month</li>
+                                <li>• Crisis detection & intervention</li>
+                                <li>• SMS therapy for feature phones</li>
+                                <li>• Basic mood tracking</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-200">Premium (R99/month)</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Unlimited AI therapy sessions</li>
+                                <li>• Advanced mood analytics</li>
+                                <li>• Priority crisis response</li>
+                                <li>• Family mental health plans</li>
+                                <li>• Offline therapy resources</li>
+                            </ul>
+                            <p class="text-xs text-green-300 mt-2">*Traditional therapy: R500-R1200/session</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-blue-400 backdrop-blur-sm">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-300">B2B Mental Health</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-blue-200">Universities & Schools</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Student mental health platform</li>
+                                <li>• Exam stress management</li>
+                                <li>• R15,000-R50,000/month per institution</li>
+                                <li>• Crisis intervention protocols</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-200">Corporate Wellness</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Employee mental health support</li>
+                                <li>• Burnout prevention programs</li>
+                                <li>• R200-R500 per employee/year</li>
+                                <li>• Mental health analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg border border-purple-400 backdrop-blur-sm">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-300">Government & Healthcare</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-purple-200">Public Mental Health</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Provincial mental health programs</li>
+                                <li>• Suicide prevention initiatives</li>
+                                <li>• R2M-R20M annual contracts</li>
+                                <li>• Population mental health monitoring</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-purple-200">Healthcare Providers</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Mental health triage system</li>
+                                <li>• Therapist support tools</li>
+                                <li>• R10,000-R100,000/month per facility</li>
+                                <li>• Integration with patient records</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-black bg-opacity-40 p-8 rounded-lg border border-purple-400">
+                <h3 class="text-3xl font-bold mb-6 text-center text-white">5-Year Mental Health Revenue Projection</h3>
+                <div class="grid md:grid-cols-5 gap-4 text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-purple-400">Year 1</div>
+                        <div class="text-lg text-white">R9M</div>
+                        <div class="text-sm text-purple-300">10K users</div>
+                        <div class="text-xs text-gray-400">Focus: Student market</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-cyan-400">Year 2</div>
+                        <div class="text-lg text-white">R45M</div>
+                        <div class="text-sm text-cyan-300">50K users</div>
+                        <div class="text-xs text-gray-400">B2B expansion</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-green-400">Year 3</div>
+                        <div class="text-lg text-white">R150M</div>
+                        <div class="text-sm text-green-300">200K users</div>
+                        <div class="text-xs text-gray-400">Government contracts</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-yellow-400">Year 4</div>
+                        <div class="text-lg text-white">R450M</div>
+                        <div class="text-sm text-yellow-300">1M users</div>
+                        <div class="text-xs text-gray-400">Regional expansion</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-pink-400">Year 5</div>
+                        <div class="text-lg text-white">R1.8B</div>
+                        <div class="text-sm text-pink-300">5M users</div>
+                        <div class="text-xs text-gray-400">Continental scale</div>
+                    </div>
+                </div>
+
+                <!-- Key Revenue Drivers -->
+                <div class="mt-8 grid md:grid-cols-3 gap-6">
+                    <div class="bg-purple-900 bg-opacity-30 p-4 rounded border border-purple-400">
+                        <h4 class="font-bold text-purple-200 mb-2">Premium Subscriptions</h4>
+                        <p class="text-sm">R99/month × 500K premium users = R594M/year by Year 5</p>
+                    </div>
+                    <div class="bg-cyan-900 bg-opacity-30 p-4 rounded border border-cyan-400">
+                        <h4 class="font-bold text-cyan-200 mb-2">B2B Contracts</h4>
+                        <p class="text-sm">Universities, corporates, healthcare: R900M/year by Year 5</p>
+                    </div>
+                    <div class="bg-pink-900 bg-opacity-30 p-4 rounded border border-pink-400">
+                        <h4 class="font-bold text-pink-200 mb-2">Government Programs</h4>
+                        <p class="text-sm">Provincial mental health contracts: R300M/year by Year 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Implementation Roadmap -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Implementation Roadmap</h2>
+            <div class="space-y-8">
+                <div class="bg-blue-900 bg-opacity-30 p-6 rounded-lg border border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">Phase 1: MVP Development (Months 1-3)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold mb-2">Technical Milestones</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>✅ Core medical AI engine</li>
+                                <li>✅ Emergency detection system</li>
+                                <li>✅ React Native mobile app</li>
+                                <li>🔄 USSD gateway integration</li>
+                                <li>🔄 Voice AI for feature phones</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Business Milestones</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>🔄 Telecom operator partnerships</li>
+                                <li>🔄 Healthcare provider pilots</li>
+                                <li>🔄 Regulatory compliance (POPIA)</li>
+                                <li>🔄 Initial user testing (1K users)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-green-900 bg-opacity-30 p-6 rounded-lg border border-green-500">
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Phase 2: Market Launch (Months 4-6)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold mb-2">Product Features</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Multi-language support (4 languages)</li>
+                                <li>• Advanced emergency protocols</li>
+                                <li>• Health data analytics dashboard</li>
+                                <li>• Integration with local clinics</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Go-to-Market</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Launch in 3 provinces</li>
+                                <li>• Partnership with Discovery Health</li>
+                                <li>• NGO collaboration (Doctors Without Borders)</li>
+                                <li>• Target: 10K active users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-purple-900 bg-opacity-30 p-6 rounded-lg border border-purple-500">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-400">Phase 3: Scale & Expansion (Months 7-12)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold mb-2">Technology Enhancement</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• AI model improvements (BioBERT)</li>
+                                <li>• Predictive health analytics</li>
+                                <li>• Telemedicine integration</li>
+                                <li>• IoT device connectivity</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">Market Expansion</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• National rollout (all 9 provinces)</li>
+                                <li>• SADC region expansion</li>
+                                <li>• Government health department contracts</li>
+                                <li>• Target: 100K active users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 11: Team & Investment -->
+    <section class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold mb-12 text-center">Investment Opportunity</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-bold mb-8 text-blue-400">Funding Requirements</h3>
+                    <div class="space-y-6">
+                        <div class="bg-blue-900 bg-opacity-30 p-6 rounded-lg border border-blue-500">
+                            <h4 class="text-2xl font-bold mb-4">Seed Round: R9M</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Mental Health AI Development</span>
+                                    <span>40% (R3.6M)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Team Expansion (Psychologists + Devs)</span>
+                                    <span>30% (R2.7M)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Crisis Intervention Infrastructure</span>
+                                    <span>20% (R1.8M)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Operations & Regulatory (HPCSA)</span>
+                                    <span>10% (R900K)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-900 bg-opacity-30 p-6 rounded-lg border border-green-500">
+                            <h4 class="text-2xl font-bold mb-4">Series A: R54M (Year 2)</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Scale mental health AI infrastructure</li>
+                                <li>• SADC region expansion</li>
+                                <li>• Advanced crisis detection models</li>
+                                <li>• University partnerships</li>
+                                <li>• Government mental health contracts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-bold mb-8 text-green-400">Why Invest Now?</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-green-300">🚀 First Mover Advantage</h4>
+                            <p class="text-sm">First privacy-first medical AI with feature phone support in Africa</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-blue-300">📈 Massive Market</h4>
+                            <p class="text-sm">1.1B underserved population in Sub-Saharan Africa</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-purple-300">🏥 Social Impact</h4>
+                            <p class="text-sm">Potential to save thousands of lives through early intervention</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-yellow-300">💰 Strong Unit Economics</h4>
+                            <p class="text-sm">Low marginal cost, high lifetime value, multiple revenue streams</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="text-xl font-bold mb-2 text-red-300">🛡️ Regulatory Moat</h4>
+                            <p class="text-sm">Privacy-first approach creates competitive advantage</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-yellow-900 bg-opacity-30 p-6 rounded-lg border border-yellow-500">
+                        <h4 class="text-xl font-bold mb-4 text-yellow-400">Expected Returns</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>5-Year Revenue Projection</span>
+                                <span class="font-bold">$75M</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Potential Valuation (Year 5)</span>
+                                <span class="font-bold">$500M</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>ROI for Seed Investors</span>
+                                <span class="font-bold text-green-400">100x+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 13: Call to Action - Mental Health Revolution -->
+    <section class="slide crisis-gradient">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-6xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Break the Silence. Save Lives.</h2>
+            <p class="text-3xl mb-8 text-orange-100">Join the mental health revolution that's transforming Africa</p>
+
+            <!-- The Mental Health Crisis Urgency -->
+            <div class="bg-red-900 bg-opacity-40 p-6 rounded-lg border border-red-400 mb-8">
+                <h3 class="text-3xl font-bold mb-4 text-red-200">⏰ Every Hour We Wait...</h3>
+                <div class="grid md:grid-cols-4 gap-4 text-lg">
+                    <div>
+                        <div class="text-4xl font-bold text-red-300">1</div>
+                        <p>person dies by suicide in SA</p>
+                        <p class="text-sm text-red-200">(every 62 minutes)</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-orange-300">100s</div>
+                        <p>students have suicidal thoughts</p>
+                        <p class="text-sm text-orange-200">(41% of university students)</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-purple-300">1,000s</div>
+                        <p>suffer in silence with depression</p>
+                        <p class="text-sm text-purple-200">(75% get no treatment)</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-yellow-300">36M</div>
+                        <p>excluded from mental health apps</p>
+                        <p class="text-sm text-yellow-200">(feature phone users)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Mental Health Revolution Opportunity -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-purple-400">
+                    <i class="fas fa-brain text-6xl mb-4 text-purple-200 brain-animation"></i>
+                    <h3 class="text-3xl font-bold mb-4">10 Million Minds</h3>
+                    <p class="text-lg">Transform mental healthcare for 10M+ people suffering from depression and anxiety</p>
+                    <p class="text-sm text-purple-200 mt-2">Breaking stigma, saving lives, healing communities</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-cyan-400">
+                    <i class="fas fa-globe-africa text-6xl mb-4 text-cyan-200"></i>
+                    <h3 class="text-3xl font-bold mb-4">Continental Healing</h3>
+                    <p class="text-lg">First mental health AI built for African culture, languages, and Ubuntu philosophy</p>
+                    <p class="text-sm text-cyan-200 mt-2">From Cape Town to Cairo - mental health for all</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm pulse-animation border border-pink-400">
+                    <i class="fas fa-heart text-6xl mb-4 text-pink-200"></i>
+                    <h3 class="text-3xl font-bold mb-4">Lives Saved Daily</h3>
+                    <p class="text-lg">Prevent suicides, detect crises, provide 24/7 support when it matters most</p>
+                    <p class="text-sm text-pink-200 mt-2">Every life saved creates ripples of hope</p>
+                </div>
+            </div>
+
+            <!-- The Ask -->
+            <div class="bg-white bg-opacity-20 p-8 rounded-lg mb-8">
+                <h3 class="text-4xl font-bold mb-6">What We Need to Win</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4 text-yellow-300">💰 Investment Partners</h4>
+                        <p class="text-lg mb-4">$500K seed round to scale technology and reach first 100K users</p>
+                        <div class="bg-yellow-900 bg-opacity-30 p-4 rounded">
+                            <p class="text-sm"><strong>ROI Potential:</strong> 100x+ returns for early investors</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4 text-green-300">🤝 Strategic Partners</h4>
+                        <p class="text-lg mb-4">Telecom operators, healthcare providers, government agencies</p>
+                        <div class="bg-green-900 bg-opacity-30 p-4 rounded">
+                            <p class="text-sm"><strong>Partnership Value:</strong> Instant access to millions of users</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Call to Action -->
+            <div class="space-y-6">
+                <h3 class="text-4xl font-bold mb-6 text-white">Ready to Change Africa's Healthcare Forever?</h3>
+                <div class="flex justify-center space-x-8">
+                    <button class="bg-white text-red-600 px-12 py-6 rounded-lg font-bold text-2xl hover:bg-gray-100 pulse-animation shadow-2xl">
+                        <i class="fas fa-handshake mr-3"></i>
+                        Partner With Us
+                    </button>
+                    <button class="bg-yellow-500 text-black px-12 py-6 rounded-lg font-bold text-2xl hover:bg-yellow-400 pulse-animation shadow-2xl">
+                        <i class="fas fa-rocket mr-3"></i>
+                        Invest Now
+                    </button>
+                </div>
+
+                <div class="mt-12 bg-black bg-opacity-40 p-6 rounded-lg border border-purple-400">
+                    <h4 class="text-3xl font-bold mb-4 text-purple-200">Let's Break the Silence Together</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-xl">
+                        <div>
+                            <p><strong>Email:</strong> team@mindscope.africa</p>
+                            <p><strong>Demo:</strong> demo.mindscope.africa</p>
+                        </div>
+                        <div>
+                            <p><strong>GitHub:</strong> github.com/mindscope-africa</p>
+                            <p><strong>LinkedIn:</strong> /company/mindscope-africa</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-lg text-purple-200">Crisis Support: Text "HELP" to 31393 (24/7)</p>
+                    </div>
+                </div>
+
+                <p class="text-3xl font-bold text-white mt-8">Together, we can save lives and heal minds across Africa 🧠💜🇿🇦</p>
+                <p class="text-xl text-purple-200 mt-4">Because every mind matters, every life has value, and no one should suffer in silence.</p>
+            </div>
+        </div>
+    </section>
+
+    </div> <!-- End of presentationContainer -->
 </body>
 </html>
